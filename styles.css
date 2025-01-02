@@ -1,0 +1,1199 @@
+/* General Styles */
+body {
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #4A3F35;
+  background-color: #F5F1E8;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  color: #4A3F35;
+}
+
+a {
+  color: #8B7355;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #6B5A4A;
+}
+
+/* Header */
+header.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #E8DCCE;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+  height: 50px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 1.5rem;
+}
+
+nav ul li a {
+  font-weight: 500;
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #4A3F35;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block; /* Show the hamburger menu on mobile */
+  }
+
+  nav#nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hide the menu off-screen by default */
+    width: 70%; /* Width of the mobile menu */
+    height: 100vh;
+    background-color: #E8DCCE;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding-top: 4rem;
+  }
+
+  nav#nav-menu.active {
+    right: 0; /* Slide the menu into view */
+  }
+
+  nav#nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  nav#nav-menu ul li {
+    margin: 1.5rem 0;
+  }
+
+  /* Overlay for when the menu is open */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #FFF8F0;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(74, 63, 53, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 
+    0 0 20px 10px rgba(255, 255, 255, 0.5),
+    0 0 40px 20px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.hero-content:hover {
+  box-shadow: 
+    0 0 30px 15px rgba(255, 255, 255, 0.6),
+    0 0 50px 25px rgba(255, 255, 255, 0.4);
+}
+
+.hero-content h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #FFF8F0;
+  text-shadow: 
+    2px 2px 0 #8B7355,
+    4px 4px 0 #6B5A4A,
+    6px 6px 0 #4A3F35;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background-color: #8B7355;
+  color: #FFF8F0;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  border-radius: 25px;
+  display: inline-block;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #6B5A4A;
+}
+
+/* Services Section */
+.services {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #FFF8F0;
+}
+
+.services h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background-color: #E8DCCE;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-text {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.service-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.service-text p {
+  font-size: 1rem;
+  color: #4A3F35;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.learn-more {
+  background-color: #8B7355;
+  color: #FFF8F0;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.learn-more:hover {
+  background-color: #6B5A4A;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #FFF8F0;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+}
+
+.modal-content h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4A3F35;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  color: #4A3F35;
+  margin-bottom: 1rem;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.modal-content ul li {
+  font-size: 0.9rem;
+  color: #6B5A4A;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.modal-content ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #8B7355;
+}
+
+.modal-cta {
+  display: block;
+  background-color: #8B7355;
+  color: #FFF8F0;
+  padding: 0.8rem 1.5rem;
+  text-align: center;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin: 1rem auto 0;
+  width: fit-content;
+}
+
+.modal-cta:hover {
+  background-color: #6B5A4A;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  color: #4A3F35;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #8B7355;
+}
+
+/* Products Section */
+.products {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #FFF8F0;
+}
+
+.products h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+
+.product-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-item {
+  width: 30%;
+  margin: 1rem;
+  text-align: center;
+  background-color: #E8DCCE;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-text {
+  padding: 1.5rem;
+}
+
+.product-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-text p {
+  font-size: 1rem;
+  color: #4A3F35;
+  margin-bottom: 1rem;
+}
+
+.order-button {
+  background-color: #8B7355;
+  color: #FFF8F0;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+  background-color: #6B5A4A;
+}
+
+/* Order Form Modal */
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order-form input, .order-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #8B7355;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #FFF8F0;
+}
+
+.order-form button {
+  background-color: #8B7355;
+  color: #FFF8F0;
+  padding: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.order-form button:hover {
+  background-color: #6B5A4A;
+}
+
+/* Follow Us Section */
+.follow-us {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #FFF8F0;
+}
+
+.follow-us h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+
+.social-posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-post {
+  background-color: #E8DCCE;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-post:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.post-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.post-content {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.post-content p {
+  font-size: 1rem;
+  color: #4A3F35;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.social-link {
+  background-color: #8B7355;
+  color: #FFF8F0;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: #6B5A4A;
+}
+
+/* Store Hours Section */
+.store-hours {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #FFF8F0;
+}
+
+.store-hours h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+
+.store-hours p {
+  font-size: 1.2rem;
+  color: #4A3F35;
+}
+
+/* Reviews Section */
+.reviews {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #FFF8F0;
+}
+
+.reviews h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  color: #4A3F35;
+}
+
+.review-carousel {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 200px; /* Fixed height to prevent layout shift */
+}
+
+.review-list {
+  position: relative;
+}
+
+.review-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.review-item.active {
+  opacity: 1;
+}
+
+.review-item blockquote {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #6B5A4A;
+  margin: 0;
+  line-height: 1.6;
+  position: relative;
+}
+
+.review-item blockquote::before {
+  content: "“";
+  font-size: 3rem;
+  color: #8B7355;
+  position: absolute;
+  left: -1.5rem;
+  top: -0.5rem;
+}
+
+.review-item blockquote::after {
+  content: "”";
+  font-size: 3rem;
+  color: #8B7355;
+  position: absolute;
+  right: -1.5rem;
+  bottom: -1.5rem;
+}
+
+.star-rating {
+  color: #FFD700;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.reviewer-name {
+  font-size: 1.1rem;
+  color: #4A3F35;
+  font-weight: 600;
+  margin: 0;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(139, 115, 85, 0.8);
+  color: #FFF8F0;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+  background-color: #6B5A4A;
+}
+
+.carousel-button.prev {
+  left: 1rem;
+}
+
+.carousel-button.next {
+  right: 1rem;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #8B7355;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+  background-color: #6B5A4A;
+}
+
+/* Contact Us Section */
+.contact-us {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #FFF8F0;
+}
+
+.contact-us h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+
+.contact-us form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-us form input, .contact-us form textarea {
+  width: 80%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border: 1px solid #8B7355;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #FFF8F0;
+}
+
+.contact-us form button {
+  background-color: #8B7355;
+  color: #FFF8F0;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.contact-us form button:hover {
+  background-color: #6B5A4A;
+}
+
+/* Footer Styles */
+.premium-footer {
+  background-color: #4A3F35;
+  color: #FFF8F0;
+  padding: 3rem 2rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #8B7355;
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+.footer-logo-img {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  color: #FFF8F0;
+  line-height: 1.6;
+}
+
+.footer-sitemap h3,
+.footer-contact h3,
+.footer-social h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #FFF8F0;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer-sitemap ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-sitemap ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-sitemap ul li a {
+  color: #FFF8F0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-sitemap ul li a:hover {
+  color: #8B7355;
+}
+
+.footer-contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-contact input,
+.footer-contact textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #8B7355;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #FFF8F0;
+  color: #4A3F35;
+}
+
+.footer-contact button {
+  background-color: #8B7355;
+  color: #FFF8F0;
+  padding: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.footer-contact button:hover {
+  background-color: #6B5A4A;
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.footer-social .social-icons a {
+  color: #FFF8F0;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social .social-icons a:hover {
+  color: #8B7355;
+}
+
+/* Move "Follow Us" title slightly to the right on desktop */
+@media (min-width: 769px) {
+  .footer-social h3 {
+    text-align: center;
+  }
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: #FFF8F0;
+  margin: 0;
+}
+
+.footer-bottom a {
+  color: #FFF8F0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: #8B7355;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.footer-links a {
+  color: #FFF8F0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #8B7355;
+}
+
+/* Privacy Policy & Terms of Service Section */
+.privacy-terms {
+  padding: 4rem 2rem;
+  background-color: #FFF8F0;
+  color: #4A3F35;
+  text-align: center;
+}
+
+.privacy-terms .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #E8DCCE;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.privacy-terms h1 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  font-family: 'Playfair Display', serif;
+  color: #4A3F35;
+  text-align: center;
+}
+
+.privacy-terms h2 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  color: #4A3F35;
+  text-align: center;
+}
+
+.privacy-terms h3 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  color: #4A3F35;
+  text-align: center;
+}
+
+.privacy-terms p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.privacy-terms ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.privacy-terms ul li {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+/* Dark Mode Styles for Privacy Section */
+.privacy-terms.privacy-dark {
+  background-color: #000; /* Black background for the privacy section */
+  color: #D2B48C; /* Tan text color */
+}
+
+.privacy-terms.privacy-dark .container {
+  background-color: #1A1A1A; /* Slightly lighter black for the container */
+  color: #D2B48C; /* Tan text color */
+}
+
+.privacy-terms.privacy-dark h1,
+.privacy-terms.privacy-dark h2,
+.privacy-terms.privacy-dark h3 {
+  color: #D2B48C; /* Tan text color for headings */
+}
+
+.privacy-terms.privacy-dark p,
+.privacy-terms.privacy-dark li {
+  color: #D2B48C; /* Tan text color for paragraphs and list items */
+}
+
+.privacy-terms.privacy-dark a {
+  color: #8B7355; /* Dark tan color for links */
+}
+
+.privacy-terms.privacy-dark a:hover {
+  color: #6B5A4A; /* Slightly darker tan for link hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .service-grid, .product-list, .review-list, .social-posts {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card, .product-item, .review-item, .social-post {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .footer-container {
+    text-align: center;
+  }
+
+  .footer-sitemap,
+  .footer-contact,
+  .footer-social {
+    margin-bottom: 2rem;
+  }
+
+  .footer-social .social-icons {
+    justify-content: center;
+  }
+}
+
+/* Back to Top Button */
+.back-to-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #8B7355;
+  color: #FFF8F0;
+  border: none;
+  border-radius: 50%; /* Makes the button a circle */
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  opacity: 0; /* Hidden by default */
+  visibility: hidden; /* Hidden by default */
+}
+
+.back-to-top.show {
+  opacity: 1; /* Visible when scrolled */
+  visibility: visible; /* Visible when scrolled */
+}
+
+.back-to-top:hover {
+  background-color: #6B5A4A; /* Darker color on hover */
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #8B7355;
+  color: #FFF8F0;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #6B5A4A;
+  transform: scale(1.1);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #000; /* Black background for the entire page */
+  color: #D2B48C; /* Tan text color */
+}
+
+/* Header */
+.dark-mode header.sticky-nav {
+  background-color: #000; /* Black background for the header */
+  color: #D2B48C; /* Tan text color */
+}
+
+/* Hero Section */
+.dark-mode .hero-content {
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+  color: #D2B48C; /* Tan text color */
+}
+
+/* Services Section */
+.dark-mode .services {
+  background-color: #000; /* Black background */
+  color: #D2B48C; /* Tan text color */
+}
+
+.dark-mode .service-card {
+  background-color: #1A1A1A; /* Slightly lighter black for cards */
+  color: #D2B48C; /* Tan text color */
+}
+
+/* Products Section */
+.dark-mode .products {
+  background-color: #000; /* Black background */
+  color: #D2B48C; /* Tan text color */
+}
+
+.dark-mode .product-item {
+  background-color: #1A1A1A; /* Slightly lighter black for product items */
+  color: #D2B48C; /* Tan text color */
+}
+
+/* Follow Us Section */
+.dark-mode .follow-us {
+  background-color: #000; /* Black background */
+  color: #D2B48C; /* Tan text color */
+}
+
+.dark-mode .social-post {
+  background-color: #1A1A1A; /* Slightly lighter black for social posts */
+  color: #D2B48C; /* Tan text color */
+}
+
+/* Store Hours Section */
+.dark-mode .store-hours {
+  background-color: #000; /* Black background */
+  color: #D2B48C; /* Tan text color */
+}
+
+/* Reviews Section */
+.dark-mode .reviews {
+  background-color: #000; /* Black background */
+  color: #D2B48C; /* Tan text color */
+}
+
+.dark-mode .review-item blockquote {
+  color: #D2B48C; /* Tan text color for reviews */
+}
+
+/* Footer */
+.dark-mode .premium-footer {
+  background-color: #000; /* Black background */
+  color: #D2B48C; /* Tan text color */
+}
+
+.dark-mode .footer-sitemap ul li a,
+.dark-mode .footer-bottom a {
+  color: #D2B48C; /* Tan text color for links */
+}
+
+.dark-mode .footer-sitemap ul li a:hover,
+.dark-mode .footer-bottom a:hover {
+  color: #8B7355; /* Slightly darker tan for hover */
+}
+
+.dark-mode .footer-contact input,
+.dark-mode .footer-contact textarea {
+  background-color: #1A1A1A; /* Slightly lighter black for input fields */
+  color: #D2B48C; /* Tan text color */
+  border-color: #8B7355; /* Tan border color */
+}
+
+.dark-mode .footer-contact button {
+  background-color: #8B7355; /* Tan background for buttons */
+  color: #000; /* Black text color */
+}
+
+.dark-mode .footer-contact button:hover {
+  background-color: #6B5A4A; /* Slightly darker tan for hover */
+}
+
+/* Modals */
+.dark-mode .modal-content {
+  background-color: #1A1A1A; /* Slightly lighter black for modals */
+  color: #D2B48C; /* Tan text color */
+}
+
+.dark-mode .modal-content ul li {
+  color: #D2B48C; /* Tan text color for list items */
+}
+
+.dark-mode .modal-cta {
+  background-color: #8B7355; /* Tan background for modal CTAs */
+  color: #000; /* Black text color */
+}
+
+.dark-mode .modal-cta:hover {
+  background-color: #6B5A4A; /* Slightly darker tan for hover */
+}
+
+/* Back to Top Button */
+.dark-mode .back-to-top {
+  background-color: #8B7355; /* Tan background for the button */
+  color: #000; /* Black text color */
+}
+
+.dark-mode .back-to-top:hover {
+  background-color: #6B5A4A; /* Slightly darker tan for hover */
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode .dark-mode-toggle {
+  background-color: #8B7355; /* Tan background for the button */
+  color: #000; /* Black text color */
+}
+
+.dark-mode .dark-mode-toggle:hover {
+  background-color: #6B5A4A; /* Slightly darker tan for hover */
+}

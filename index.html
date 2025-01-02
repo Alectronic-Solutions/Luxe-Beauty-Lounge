@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxe Beauty Lounge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Dark Mode Toggle Button -->
+  <button id="dark-mode-toggle" class="dark-mode-toggle">
+    <i class="fas fa-sun"></i>
+  </button>
+
+<!-- Header -->
+<header class="sticky-nav">
+  <div class="logo" onclick="scrollToTop()">
+    <img src="images/logo.png" alt="Luxe Beauty Lounge">
+  </div>
+  <!-- Hamburger Menu Button -->
+  <button id="hamburger-menu" class="hamburger-menu">
+    <i class="fas fa-bars"></i>
+  </button>
+  <!-- Navigation Links -->
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="#salon-specialties">Salon Specialties</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#follow-us">Follow Us</a></li>
+      <li><a href="#store-hours">Store Hours</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#footer-contact">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <video autoplay muted loop class="hero-video">
+      <source src="videos/hero-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h2>Welcome to Luxe Beauty Lounge</h2>
+      <p>Your destination for premium beauty and wellness services.</p>
+      <a href="#salon-specialties" class="cta-button">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- Salon Specialties Section -->
+  <section id="salon-specialties" class="services">
+    <h2>Salon Specialties & Services</h2>
+    <div class="service-grid">
+      <!-- Hair Styling Card -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="images/hair-styling-service.png" alt="Hair Styling">
+        </div>
+        <div class="service-text">
+          <h3>Hair Styling</h3>
+          <p>Professional hair styling for all occasions. Our expert stylists create looks that suit your personality and style.</p>
+          <button class="learn-more" data-modal="modal1">Learn More</button>
+        </div>
+      </div>
+
+      <!-- Makeup Card -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="images/makeup-service.png" alt="Makeup">
+        </div>
+        <div class="service-text">
+          <h3>Makeup</h3>
+          <p>Flawless makeup for weddings, parties, and more. We use high-quality products to enhance your natural beauty.</p>
+          <button class="learn-more" data-modal="modal2">Learn More</button>
+        </div>
+      </div>
+
+      <!-- Skincare Card -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="images/skincare-service.png" alt="Skincare">
+        </div>
+        <div class="service-text">
+          <h3>Skincare</h3>
+          <p>Rejuvenating skincare treatments for a glowing look. Our facials and treatments are tailored to your skin type.</p>
+          <button class="learn-more" data-modal="modal3">Learn More</button>
+        </div>
+      </div>
+
+      <!-- Nails Card -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="images/nails-service.png" alt="Nails">
+        </div>
+        <div class="service-text">
+          <h3>Nails</h3>
+          <p>Pamper your hands and feet with our luxurious nail services. From manicures to pedicures, we’ve got you covered.</p>
+          <button class="learn-more" data-modal="modal4">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Hair Styling</h3>
+      <p>Transform your look with our expert hair styling services. Whether you need a fresh cut, vibrant color, or an elegant updo, our stylists are here to make you feel fabulous.</p>
+      <ul>
+        <li><strong>Cut & Blow Dry:</strong> Precision cuts and smooth blowouts for a polished look.</li>
+        <li><strong>Coloring & Highlights:</strong> Custom color blends to enhance your natural beauty.</li>
+        <li><strong>Extensions & Updos:</strong> Add length or create stunning styles for special occasions.</li>
+      </ul>
+      <a href="#footer-contact" class="modal-cta" onclick="closeModal('modal1')">Contact Us to Book</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Makeup</h3>
+      <p>Enhance your natural beauty with our professional makeup services. From bridal looks to evening glam, we use high-quality products to create flawless finishes.</p>
+      <ul>
+        <li><strong>Bridal Makeup:</strong> Timeless and elegant looks for your special day.</li>
+        <li><strong>Evening Glam:</strong> Bold and stunning makeup for parties and events.</li>
+        <li><strong>Editorial Looks:</strong> Creative and artistic styles for photoshoots.</li>
+      </ul>
+      <a href="#footer-contact" class="modal-cta" onclick="closeModal('modal2')">Contact Us to Book</a>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Skincare</h3>
+      <p>Rejuvenate your skin with our luxurious skincare treatments. Our facials and treatments are tailored to your skin type, leaving you with a radiant glow.</p>
+      <ul>
+        <li><strong>Facials:</strong> Deep cleansing and hydration for all skin types.</li>
+        <li><strong>Peels & Masks:</strong> Exfoliation and revitalization for smoother skin.</li>
+        <li><strong>Anti-Aging Treatments:</strong> Reduce fine lines and wrinkles with advanced techniques.</li>
+      </ul>
+      <a href="#footer-contact" class="modal-cta" onclick="closeModal('modal3')">Contact Us to Book</a>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Nails</h3>
+      <p>Pamper your hands and feet with our luxurious nail services. From gel manicures to spa pedicures, we’ll leave your nails looking flawless.</p>
+      <ul>
+        <li><strong>Gel Manicures:</strong> Long-lasting color and shine.</li>
+        <li><strong>Acrylic Nails:</strong> Durable and stylish nail extensions.</li>
+        <li><strong>Spa Pedicures:</strong> Relaxing treatments for soft, smooth feet.</li>
+      </ul>
+      <a href="#footer-contact" class="modal-cta" onclick="closeModal('modal4')">Contact Us to Book</a>
+    </div>
+  </div>
+
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <h2>Our Products</h2>
+    <div class="product-list">
+      <div class="product-item">
+        <div class="product-image">
+          <img src="images/hair-care-products.png" alt="Hair Care Products">
+        </div>
+        <div class="product-text">
+          <h3>Hair Care</h3>
+          <p>Premium shampoos, conditioners, and styling products.</p>
+          <button class="order-button" data-modal="order-modal1">Order Now</button>
+        </div>
+      </div>
+      <div class="product-item">
+        <div class="product-image">
+          <img src="images/makeup.png" alt="Makeup Products">
+        </div>
+        <div class="product-text">
+          <h3>Makeup</h3>
+          <p>High-quality makeup for a flawless finish.</p>
+          <button class="order-button" data-modal="order-modal2">Order Now</button>
+        </div>
+      </div>
+      <div class="product-item">
+        <div class="product-image">
+          <img src="images/skincare.png" alt="Skincare Products">
+        </div>
+        <div class="product-text">
+          <h3>Skincare</h3>
+          <p>Rejuvenating creams, serums, and masks.</p>
+          <button class="order-button" data-modal="order-modal3">Order Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Modals -->
+  <div id="order-modal1" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Order Products</h3>
+      <form class="order-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <select id="product-category" required>
+          <option value="" disabled selected>Select Product Category</option>
+          <option value="Hair Care">Hair Care</option>
+          <option value="Makeup">Makeup</option>
+          <option value="Skincare">Skincare</option>
+        </select>
+        <textarea placeholder="Product Details (e.g., Shampoo, Foundation, Serum)" required></textarea>
+        <button type="submit">Submit Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="order-modal2" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Order Products</h3>
+      <form class="order-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <select id="product-category" required>
+          <option value="" disabled selected>Select Product Category</option>
+          <option value="Hair Care">Hair Care</option>
+          <option value="Makeup">Makeup</option>
+          <option value="Skincare">Skincare</option>
+        </select>
+        <textarea placeholder="Product Details (e.g., Shampoo, Foundation, Serum)" required></textarea>
+        <button type="submit">Submit Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="order-modal3" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Order Products</h3>
+      <form class="order-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <select id="product-category" required>
+          <option value="" disabled selected>Select Product Category</option>
+          <option value="Hair Care">Hair Care</option>
+          <option value="Makeup">Makeup</option>
+          <option value="Skincare">Skincare</option>
+        </select>
+        <textarea placeholder="Product Details (e.g., Shampoo, Foundation, Serum)" required></textarea>
+        <button type="submit">Submit Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Follow Us Section -->
+  <section id="follow-us" class="follow-us">
+    <h2>Follow Us</h2>
+    <div class="social-posts">
+      <!-- Instagram Post -->
+      <div class="social-post">
+        <div class="post-image">
+          <img src="images/instagram-post.jpg" alt="Instagram Post">
+        </div>
+        <div class="post-content">
+          <p>✨ Glow up alert! ✨ Our new summer makeup collection is here to make you shine. Swipe left to see the full look! 💄 #LuxeBeautyLounge #SummerGlow</p>
+          <a href="https://www.instagram.com" class="social-link" target="_blank">View on Instagram</a>
+        </div>
+      </div>
+
+      <!-- Facebook Post -->
+      <div class="social-post">
+        <div class="post-image">
+          <img src="images/facebook-post.jpg" alt="Facebook Post">
+        </div>
+        <div class="post-content">
+          <p>🌟 Exciting news! 🌟 We’re hosting a FREE skincare workshop this Saturday. Learn how to achieve radiant skin with our expert estheticians. Spaces are limited, so RSVP now! 🧖‍♀️ #LuxeBeautyLounge #SkincareWorkshop</p>
+          <a href="https://www.facebook.com" class="social-link" target="_blank">View on Facebook</a>
+        </div>
+      </div>
+
+      <!-- Twitter Post -->
+      <div class="social-post">
+        <div class="post-image">
+          <img src="images/twitter-post.jpg" alt="Twitter Post">
+        </div>
+        <div class="post-content">
+          <p>🎉 Big things are coming! 🎉 Stay tuned for the launch of our NEW luxury haircare line. Your hair deserves the best, and we’re here to deliver. 💇‍♀️ #LuxeBeautyLounge #HaircareLaunch</p>
+          <a href="https://www.twitter.com" class="social-link" target="_blank">View on Twitter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store Hours Section -->
+  <section id="store-hours" class="store-hours">
+    <h2>Store Hours</h2>
+    <p>Monday - Friday: 9 AM - 7 PM</p>
+    <p>Saturday: 10 AM - 5 PM</p>
+    <p>Sunday: Closed</p>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews" class="reviews">
+    <h2>What Our Clients Say</h2>
+    <div class="review-carousel">
+      <div class="review-list">
+        <!-- Review Item 1 -->
+        <div class="review-item active">
+          <blockquote>
+            “Amazing service! I always leave feeling like a queen.”
+          </blockquote>
+          <div class="star-rating">★★★★★</div>
+          <p class="reviewer-name">— Jane Doe</p>
+        </div>
+        <!-- Review Item 2 -->
+        <div class="review-item">
+          <blockquote>
+            “The best skincare treatments I've ever had. Highly recommend!”
+          </blockquote>
+          <div class="star-rating">★★★★★</div>
+          <p class="reviewer-name">— John Smith</p>
+        </div>
+        <!-- Review Item 3 -->
+        <div class="review-item">
+          <blockquote>
+            “The staff is so friendly and professional. Love this place!”
+          </blockquote>
+          <div class="star-rating">★★★★★</div>
+          <p class="reviewer-name">— Emily Johnson</p>
+        </div>
+        <!-- Review Item 4 -->
+        <div class="review-item">
+          <blockquote>
+            “My hair has never looked better. Thank you, Luxe Beauty Lounge!”
+          </blockquote>
+          <div class="star-rating">★★★★★</div>
+          <p class="reviewer-name">— Sarah Brown</p>
+        </div>
+        <!-- Review Item 5 -->
+        <div class="review-item">
+          <blockquote>
+            “The ambiance is so relaxing, and the results are amazing.”
+          </blockquote>
+          <div class="star-rating">★★★★★</div>
+          <p class="reviewer-name">— Michael Davis</p>
+        </div>
+        <!-- Review Item 6 -->
+        <div class="review-item">
+          <blockquote>
+            “I’ve been coming here for years, and I’m never disappointed.”
+          </blockquote>
+          <div class="star-rating">★★★★★</div>
+          <p class="reviewer-name">— Laura Wilson</p>
+        </div>
+        <!-- Review Item 7 -->
+        <div class="review-item">
+          <blockquote>
+            “The nail services are top-notch. My hands feel so pampered!”
+          </blockquote>
+          <div class="star-rating">★★★★★</div>
+          <p class="reviewer-name">— Jessica Martinez</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="premium-footer">
+    <div class="footer-container">
+      <!-- Footer Logo -->
+      <div class="footer-logo" onclick="scrollToTop()">
+        <img src="images/logo.png" alt="Luxe Beauty Lounge" class="footer-logo-img">
+        <p>Your destination for premium beauty and wellness services.</p>
+      </div>
+
+      <!-- Sitemap -->
+      <div class="footer-sitemap">
+        <h3>Site Map</h3>
+        <ul>
+          <li><a href="#salon-specialties">Salon Specialties</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#follow-us">Follow Us</a></li>
+          <li><a href="#store-hours">Store Hours</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#footer-contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Form -->
+      <div id="footer-contact" class="footer-contact">
+        <h3>Contact Us</h3>
+        <form id="footer-contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Social Links -->
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.twitter.com" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="privacy-terms.html">Privacy Policy</a>
+        <a href="privacy-terms.html">Terms of Service</a>
+      </div>
+      <p>&copy; 2023 Luxe Beauty Lounge. All rights reserved.</p>
+      <a href="https://alectronic-solutions.github.io/home">Designed by Alectronic Solutions</a>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
