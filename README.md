@@ -1,1 +1,1 @@
-https://github.com/Alectronic-Solutions/Luxe-Beauty-Lounge
+https://alectronic-solutions.github.io/Luxe-Beauty-Lounge
