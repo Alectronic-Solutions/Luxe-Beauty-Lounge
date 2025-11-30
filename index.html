@@ -1,440 +1,1022 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luxe Beauty Lounge</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="images/logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Beauty Lounge | Premium Wellness</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        luxe: {
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            goldDark: '#AA8C2C',
+                            black: '#121212',
+                            charcoal: '#1A1A1A', 
+                            cream: '#F5F1E8', 
+                            tan: '#E8DCCE',
+                            tanLight: '#F2EBE0',
+                            white: '#FFFCF7', 
+                            gray: '#4A4A4A',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to bottom, rgba(18,18,18,0.3), rgba(18,18,18,0.5)), url('https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=2036&auto=format&fit=crop')",
+                        'texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')", 
+                    },
+                    fontSize: {
+                        'xxs': '0.65rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F1E8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 5px;
+            border: 2px solid #F5F1E8;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AA8C2C;
+        }
+
+        /* Smooth Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Text readability improvements */
+        body {
+            line-height: 1.8;
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #121212;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease;
+        }
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            border-top-color: #D4AF37;
+            animation: spin 1s cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Navigation Hover Effect */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Navbar Scrolled State */
+        .navbar-scrolled {
+            background-color: rgba(245, 241, 232, 0.95); /* luxe-cream with opacity */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+        .navbar-scrolled .nav-text {
+            color: #000000 !important; /* Pure Black */
+        }
+        .navbar-scrolled .logo-text {
+            color: #000000 !important;
+        }
+        .navbar-scrolled .mobile-btn {
+            color: #000000 !important;
+        }
+        /* Dark mode overrides for scrolled navbar */
+        html.dark .navbar-scrolled {
+            background-color: rgba(18, 18, 18, 0.95);
+        }
+        html.dark .navbar-scrolled .nav-text,
+        html.dark .navbar-scrolled .logo-text,
+        html.dark .navbar-scrolled .mobile-btn {
+            color: #F5F1E8 !important;
+        }
+
+        .navbar-scrolled .book-btn {
+            background-color: #D4AF37;
+            color: white;
+        }
+        .navbar-scrolled .book-btn:hover {
+            background-color: #1A1A1A;
+        }
+
+        /* Initial Navbar State */
+        .navbar-transparent .nav-text {
+            color: #F5F1E8; /* luxe-cream */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-transparent .nav-text:hover {
+            color: #D4AF37;
+        }
+
+        .bg-textured {
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+    </style>
 </head>
-<body>
-  <!-- Dark Mode Toggle Button -->
-  <button id="dark-mode-toggle" class="dark-mode-toggle">
-    <i class="fas fa-sun"></i>
-  </button>
+<body class="font-sans text-lg text-luxe-gray bg-luxe-cream bg-textured antialiased dark:bg-luxe-black dark:text-luxe-cream transition-colors duration-300">
 
-<!-- Header -->
-<header class="sticky-nav">
-  <div class="logo" onclick="scrollToTop()">
-    <img src="images/logo.png" alt="Luxe Beauty Lounge">
-  </div>
-  <!-- Hamburger Menu Button -->
-  <button id="hamburger-menu" class="hamburger-menu">
-    <i class="fas fa-bars"></i>
-  </button>
-  <!-- Navigation Links -->
-  <nav id="nav-menu">
-    <ul>
-      <li><a href="#salon-specialties">Salon Specialties</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#follow-us">Follow Us</a></li>
-      <li><a href="#store-hours">Store Hours</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#footer-contact">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <video autoplay muted loop class="hero-video">
-      <source src="videos/hero-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h2>Welcome to Luxe Beauty Lounge</h2>
-      <p>Your destination for premium beauty and wellness services.</p>
-      <a href="#salon-specialties" class="cta-button">Explore Services</a>
-    </div>
-  </section>
-
-  <!-- Salon Specialties Section -->
-  <section id="salon-specialties" class="services">
-    <h2>Salon Specialties & Services</h2>
-    <div class="service-grid">
-      <!-- Hair Styling Card -->
-      <div class="service-card">
-        <div class="service-image">
-          <img src="images/hair-styling-service.png" alt="Hair Styling">
-        </div>
-        <div class="service-text">
-          <h3>Hair Styling</h3>
-          <p>Professional hair styling for all occasions. Our expert stylists create looks that suit your personality and style.</p>
-          <button class="learn-more" data-modal="modal1">Learn More</button>
-        </div>
-      </div>
-
-      <!-- Makeup Card -->
-      <div class="service-card">
-        <div class="service-image">
-          <img src="images/makeup-service.png" alt="Makeup">
-        </div>
-        <div class="service-text">
-          <h3>Makeup</h3>
-          <p>Flawless makeup for weddings, parties, and more. We use high-quality products to enhance your natural beauty.</p>
-          <button class="learn-more" data-modal="modal2">Learn More</button>
-        </div>
-      </div>
-
-      <!-- Skincare Card -->
-      <div class="service-card">
-        <div class="service-image">
-          <img src="images/skincare-service.png" alt="Skincare">
-        </div>
-        <div class="service-text">
-          <h3>Skincare</h3>
-          <p>Rejuvenating skincare treatments for a glowing look. Our facials and treatments are tailored to your skin type.</p>
-          <button class="learn-more" data-modal="modal3">Learn More</button>
-        </div>
-      </div>
-
-      <!-- Nails Card -->
-      <div class="service-card">
-        <div class="service-image">
-          <img src="images/nails-service.png" alt="Nails">
-        </div>
-        <div class="service-text">
-          <h3>Nails</h3>
-          <p>Pamper your hands and feet with our luxurious nail services. From manicures to pedicures, we’ve got you covered.</p>
-          <button class="learn-more" data-modal="modal4">Learn More</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Modals -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Hair Styling</h3>
-      <p>Transform your look with our expert hair styling services. Whether you need a fresh cut, vibrant color, or an elegant updo, our stylists are here to make you feel fabulous.</p>
-      <ul>
-        <li><strong>Cut & Blow Dry:</strong> Precision cuts and smooth blowouts for a polished look.</li>
-        <li><strong>Coloring & Highlights:</strong> Custom color blends to enhance your natural beauty.</li>
-        <li><strong>Extensions & Updos:</strong> Add length or create stunning styles for special occasions.</li>
-      </ul>
-      <a href="#footer-contact" class="modal-cta" onclick="closeModal('modal1')">Contact Us to Book</a>
-    </div>
-  </div>
-
-  <div id="modal2" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Makeup</h3>
-      <p>Enhance your natural beauty with our professional makeup services. From bridal looks to evening glam, we use high-quality products to create flawless finishes.</p>
-      <ul>
-        <li><strong>Bridal Makeup:</strong> Timeless and elegant looks for your special day.</li>
-        <li><strong>Evening Glam:</strong> Bold and stunning makeup for parties and events.</li>
-        <li><strong>Editorial Looks:</strong> Creative and artistic styles for photoshoots.</li>
-      </ul>
-      <a href="#footer-contact" class="modal-cta" onclick="closeModal('modal2')">Contact Us to Book</a>
-    </div>
-  </div>
-
-  <div id="modal3" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Skincare</h3>
-      <p>Rejuvenate your skin with our luxurious skincare treatments. Our facials and treatments are tailored to your skin type, leaving you with a radiant glow.</p>
-      <ul>
-        <li><strong>Facials:</strong> Deep cleansing and hydration for all skin types.</li>
-        <li><strong>Peels & Masks:</strong> Exfoliation and revitalization for smoother skin.</li>
-        <li><strong>Anti-Aging Treatments:</strong> Reduce fine lines and wrinkles with advanced techniques.</li>
-      </ul>
-      <a href="#footer-contact" class="modal-cta" onclick="closeModal('modal3')">Contact Us to Book</a>
-    </div>
-  </div>
-
-  <div id="modal4" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Nails</h3>
-      <p>Pamper your hands and feet with our luxurious nail services. From gel manicures to spa pedicures, we’ll leave your nails looking flawless.</p>
-      <ul>
-        <li><strong>Gel Manicures:</strong> Long-lasting color and shine.</li>
-        <li><strong>Acrylic Nails:</strong> Durable and stylish nail extensions.</li>
-        <li><strong>Spa Pedicures:</strong> Relaxing treatments for soft, smooth feet.</li>
-      </ul>
-      <a href="#footer-contact" class="modal-cta" onclick="closeModal('modal4')">Contact Us to Book</a>
-    </div>
-  </div>
-
-  <!-- Products Section -->
-  <section id="products" class="products">
-    <h2>Our Products</h2>
-    <div class="product-list">
-      <div class="product-item">
-        <div class="product-image">
-          <img src="images/hair-care-products.png" alt="Hair Care Products">
-        </div>
-        <div class="product-text">
-          <h3>Hair Care</h3>
-          <p>Premium shampoos, conditioners, and styling products.</p>
-          <button class="order-button" data-modal="order-modal1">Order Now</button>
-        </div>
-      </div>
-      <div class="product-item">
-        <div class="product-image">
-          <img src="images/makeup.png" alt="Makeup Products">
-        </div>
-        <div class="product-text">
-          <h3>Makeup</h3>
-          <p>High-quality makeup for a flawless finish.</p>
-          <button class="order-button" data-modal="order-modal2">Order Now</button>
-        </div>
-      </div>
-      <div class="product-item">
-        <div class="product-image">
-          <img src="images/skincare.png" alt="Skincare Products">
-        </div>
-        <div class="product-text">
-          <h3>Skincare</h3>
-          <p>Rejuvenating creams, serums, and masks.</p>
-          <button class="order-button" data-modal="order-modal3">Order Now</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Order Modals -->
-  <div id="order-modal1" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Order Products</h3>
-      <form class="order-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <select id="product-category" required>
-          <option value="" disabled selected>Select Product Category</option>
-          <option value="Hair Care">Hair Care</option>
-          <option value="Makeup">Makeup</option>
-          <option value="Skincare">Skincare</option>
-        </select>
-        <textarea placeholder="Product Details (e.g., Shampoo, Foundation, Serum)" required></textarea>
-        <button type="submit">Submit Order</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="order-modal2" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Order Products</h3>
-      <form class="order-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <select id="product-category" required>
-          <option value="" disabled selected>Select Product Category</option>
-          <option value="Hair Care">Hair Care</option>
-          <option value="Makeup">Makeup</option>
-          <option value="Skincare">Skincare</option>
-        </select>
-        <textarea placeholder="Product Details (e.g., Shampoo, Foundation, Serum)" required></textarea>
-        <button type="submit">Submit Order</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="order-modal3" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Order Products</h3>
-      <form class="order-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <select id="product-category" required>
-          <option value="" disabled selected>Select Product Category</option>
-          <option value="Hair Care">Hair Care</option>
-          <option value="Makeup">Makeup</option>
-          <option value="Skincare">Skincare</option>
-        </select>
-        <textarea placeholder="Product Details (e.g., Shampoo, Foundation, Serum)" required></textarea>
-        <button type="submit">Submit Order</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Follow Us Section -->
-  <section id="follow-us" class="follow-us">
-    <h2>Follow Us</h2>
-    <div class="social-posts">
-      <!-- Instagram Post -->
-      <div class="social-post">
-        <div class="post-image">
-          <img src="images/instagram-post.jpg" alt="Instagram Post">
-        </div>
-        <div class="post-content">
-          <p>✨ Glow up alert! ✨ Our new summer makeup collection is here to make you shine. Swipe left to see the full look! 💄 #LuxeBeautyLounge #SummerGlow</p>
-          <a href="https://www.instagram.com" class="social-link" target="_blank">View on Instagram</a>
-        </div>
-      </div>
-
-      <!-- Facebook Post -->
-      <div class="social-post">
-        <div class="post-image">
-          <img src="images/facebook-post.jpg" alt="Facebook Post">
-        </div>
-        <div class="post-content">
-          <p>🌟 Exciting news! 🌟 We’re hosting a FREE skincare workshop this Saturday. Learn how to achieve radiant skin with our expert estheticians. Spaces are limited, so RSVP now! 🧖‍♀️ #LuxeBeautyLounge #SkincareWorkshop</p>
-          <a href="https://www.facebook.com" class="social-link" target="_blank">View on Facebook</a>
-        </div>
-      </div>
-
-      <!-- Twitter Post -->
-      <div class="social-post">
-        <div class="post-image">
-          <img src="images/twitter-post.jpg" alt="Twitter Post">
-        </div>
-        <div class="post-content">
-          <p>🎉 Big things are coming! 🎉 Stay tuned for the launch of our NEW luxury haircare line. Your hair deserves the best, and we’re here to deliver. 💇‍♀️ #LuxeBeautyLounge #HaircareLaunch</p>
-          <a href="https://www.twitter.com" class="social-link" target="_blank">View on Twitter</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Store Hours Section -->
-  <section id="store-hours" class="store-hours">
-    <h2>Store Hours</h2>
-    <p>Monday - Friday: 9 AM - 7 PM</p>
-    <p>Saturday: 10 AM - 5 PM</p>
-    <p>Sunday: Closed</p>
-  </section>
-
-  <!-- Reviews Section -->
-  <section id="reviews" class="reviews">
-    <h2>What Our Clients Say</h2>
-    <div class="review-carousel">
-      <div class="review-list">
-        <!-- Review Item 1 -->
-        <div class="review-item active">
-          <blockquote>
-            “Amazing service! I always leave feeling like a queen.”
-          </blockquote>
-          <div class="star-rating">★★★★★</div>
-          <p class="reviewer-name">— Jane Doe</p>
-        </div>
-        <!-- Review Item 2 -->
-        <div class="review-item">
-          <blockquote>
-            “The best skincare treatments I've ever had. Highly recommend!”
-          </blockquote>
-          <div class="star-rating">★★★★★</div>
-          <p class="reviewer-name">— John Smith</p>
-        </div>
-        <!-- Review Item 3 -->
-        <div class="review-item">
-          <blockquote>
-            “The staff is so friendly and professional. Love this place!”
-          </blockquote>
-          <div class="star-rating">★★★★★</div>
-          <p class="reviewer-name">— Emily Johnson</p>
-        </div>
-        <!-- Review Item 4 -->
-        <div class="review-item">
-          <blockquote>
-            “My hair has never looked better. Thank you, Luxe Beauty Lounge!”
-          </blockquote>
-          <div class="star-rating">★★★★★</div>
-          <p class="reviewer-name">— Sarah Brown</p>
-        </div>
-        <!-- Review Item 5 -->
-        <div class="review-item">
-          <blockquote>
-            “The ambiance is so relaxing, and the results are amazing.”
-          </blockquote>
-          <div class="star-rating">★★★★★</div>
-          <p class="reviewer-name">— Michael Davis</p>
-        </div>
-        <!-- Review Item 6 -->
-        <div class="review-item">
-          <blockquote>
-            “I’ve been coming here for years, and I’m never disappointed.”
-          </blockquote>
-          <div class="star-rating">★★★★★</div>
-          <p class="reviewer-name">— Laura Wilson</p>
-        </div>
-        <!-- Review Item 7 -->
-        <div class="review-item">
-          <blockquote>
-            “The nail services are top-notch. My hands feel so pampered!”
-          </blockquote>
-          <div class="star-rating">★★★★★</div>
-          <p class="reviewer-name">— Jessica Martinez</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="premium-footer">
-    <div class="footer-container">
-      <!-- Footer Logo -->
-      <div class="footer-logo" onclick="scrollToTop()">
-        <img src="images/logo.png" alt="Luxe Beauty Lounge" class="footer-logo-img">
-        <p>Your destination for premium beauty and wellness services.</p>
-      </div>
-
-      <!-- Sitemap -->
-      <div class="footer-sitemap">
-        <h3>Site Map</h3>
-        <ul>
-          <li><a href="#salon-specialties">Salon Specialties</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#follow-us">Follow Us</a></li>
-          <li><a href="#store-hours">Store Hours</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#footer-contact">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact Form -->
-      <div id="footer-contact" class="footer-contact">
-        <h3>Contact Us</h3>
-        <form id="footer-contact-form">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-
-      <!-- Social Links -->
-      <div class="footer-social">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="https://www.instagram.com" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com" target="_blank">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://www.twitter.com" target="_blank">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </div>
-      </div>
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="spinner"></div>
     </div>
 
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-      <div class="footer-links">
-        <a href="privacy-terms.html">Privacy Policy</a>
-        <a href="privacy-terms.html">Terms of Service</a>
-      </div>
-      <p>&copy; 2023 Luxe Beauty Lounge. All rights reserved.</p>
-      <a href="https://alectronic-solutions.github.io/">Designed by Alectronic Solutions</a>
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed top-24 right-5 bg-luxe-white dark:bg-luxe-charcoal border-l-4 border-luxe-gold shadow-2xl p-6 rounded-lg transform translate-x-full transition-transform duration-300 z-50 flex items-center gap-4 max-w-sm w-full">
+        <i class="fas fa-check-circle text-luxe-gold text-2xl"></i>
+        <div>
+            <h4 class="font-serif font-bold text-luxe-black dark:text-luxe-gold text-lg">Success</h4>
+            <p class="text-base text-gray-600 dark:text-gray-300" id="toast-message">Action completed.</p>
+        </div>
     </div>
-  </footer>
 
-  <!-- Back to Top Button -->
-  <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 bg-transparent py-8 navbar-transparent">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-serif font-bold text-white tracking-widest flex items-center gap-2 group logo-text transition-colors duration-300">
+                <span class="text-luxe-gold text-4xl group-hover:scale-110 transition-transform duration-300 block">L</span>UXE
+            </a>
 
-  <script src="script.js"></script>
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-12">
+                <a href="#services" class="nav-text font-bold text-sm uppercase tracking-[0.2em] nav-link transition-colors">Services</a>
+                <a href="#products" class="nav-text font-bold text-sm uppercase tracking-[0.2em] nav-link transition-colors">Products</a>
+                <a href="#reviews" class="nav-text font-bold text-sm uppercase tracking-[0.2em] nav-link transition-colors">Reviews</a>
+                <a href="#contact" class="nav-text font-bold text-sm uppercase tracking-[0.2em] nav-link transition-colors">Contact</a>
+                
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="nav-text transition-colors p-2 hover:text-luxe-gold">
+                    <i class="fas fa-moon text-xl"></i>
+                </button>
+
+                <a href="#contact" class="book-btn bg-white text-luxe-black px-8 py-3 rounded-full font-bold text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-lg transform hover:-translate-y-0.5 hover:bg-luxe-gold hover:text-white border border-transparent">
+                    Book Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white mobile-btn text-3xl p-2 focus:outline-none transition-colors duration-300 hover:text-luxe-gold">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay (Adaptive Theme) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-luxe-cream/95 dark:bg-luxe-black/98 z-50 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-center items-center space-y-10 backdrop-blur-md">
+        <!-- Close Button -->
+        <button id="close-menu-btn" class="absolute top-8 right-8 text-black dark:text-white text-4xl hover:text-luxe-gold transition-colors p-4 focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Menu Links -->
+        <a href="#services" class="text-3xl md:text-4xl font-serif text-black dark:text-white hover:text-luxe-gold mobile-link transition-colors tracking-widest">Services</a>
+        <a href="#products" class="text-3xl md:text-4xl font-serif text-black dark:text-white hover:text-luxe-gold mobile-link transition-colors tracking-widest">Products</a>
+        <a href="#reviews" class="text-3xl md:text-4xl font-serif text-black dark:text-white hover:text-luxe-gold mobile-link transition-colors tracking-widest">Reviews</a>
+        <a href="#contact" class="text-3xl md:text-4xl font-serif text-black dark:text-white hover:text-luxe-gold mobile-link transition-colors tracking-widest">Contact</a>
+        
+        <!-- Mobile Theme Toggle -->
+        <button id="mobile-theme-toggle" class="text-2xl text-black dark:text-white hover:text-luxe-gold transition-colors flex items-center gap-3 mt-8 border border-black/20 dark:border-white/20 px-6 py-2 rounded-full">
+            <span class="text-lg font-sans uppercase tracking-widest">Switch Theme</span> <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative min-h-screen bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed flex items-center justify-center text-center px-6">
+        <div class="relative z-10 max-w-5xl mx-auto space-y-8 reveal active pt-20">
+            <p class="text-luxe-gold uppercase tracking-[0.4em] text-sm md:text-base font-bold animate-pulse">Welcome to Sanctuary</p>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif text-white leading-tight drop-shadow-2xl">
+                Redefine Your <br><span class="italic text-luxe-gold">Elegance</span>
+            </h1>
+            <p class="text-gray-100 text-xl md:text-2xl font-light max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+                Experience the pinnacle of beauty and wellness services. Where luxury meets expertise, and you are the masterpiece.
+            </p>
+            <!-- Fixed buttons with consistent widths -->
+            <div class="pt-10 flex flex-col md:flex-row gap-6 justify-center items-center w-full">
+                <a href="#services" class="w-full md:w-56 bg-luxe-gold text-luxe-black px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.5)]">
+                    Explore Services
+                </a>
+                <a href="#contact" class="w-full md:w-56 border-2 border-white text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-white hover:text-luxe-black transition-all duration-300 backdrop-blur-sm">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator (Fixed centering and positioning) -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+            <a href="#services" class="text-white/80 hover:text-luxe-gold transition-colors p-4 block">
+                <i class="fas fa-chevron-down text-4xl drop-shadow-lg"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <!-- Blended Gradient: Cream to Tan -->
+    <section id="services" class="py-32 px-6 md:px-12 bg-gradient-to-b from-luxe-cream via-luxe-cream to-luxe-tanLight bg-textured dark:bg-luxe-charcoal dark:from-luxe-charcoal dark:to-luxe-charcoal transition-colors">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="text-center mb-24 reveal">
+                <span class="text-luxe-gold text-sm font-bold uppercase tracking-[0.2em]">Our Expertise</span>
+                <h2 class="text-5xl md:text-6xl font-serif mt-4 mb-6 dark:text-white text-luxe-black">Salon Specialties</h2>
+                <div class="w-24 h-1 bg-luxe-gold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-12">
+                <!-- Service 1 -->
+                <div class="group bg-luxe-white dark:bg-luxe-black rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 reveal border border-luxe-tan/30 dark:border-luxe-gray/20">
+                    <div class="h-80 overflow-hidden relative cursor-pointer" onclick="openModal('modal-hair')">
+                        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1000&auto=format&fit=crop" alt="Hair Styling" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
+                    </div>
+                    <div class="p-10 text-center relative">
+                        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-luxe-gold text-white w-20 h-20 flex items-center justify-center rounded-full text-3xl shadow-xl border-4 border-luxe-white dark:border-luxe-black">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3 class="mt-10 text-3xl font-serif font-bold mb-4 dark:text-white text-luxe-black">Hair Styling</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-8">Precision cuts, vibrant coloring, and elegant updos tailored to your unique personality.</p>
+                        <button onclick="openModal('modal-hair')" class="text-luxe-gold font-bold text-xs uppercase tracking-[0.2em] hover:text-luxe-black dark:hover:text-white transition-colors border-b-2 border-transparent hover:border-luxe-gold pb-1">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group bg-luxe-white dark:bg-luxe-black rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 reveal delay-100 border border-luxe-tan/30 dark:border-luxe-gray/20">
+                    <div class="h-80 overflow-hidden relative cursor-pointer" onclick="openModal('modal-makeup')">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1000&auto=format&fit=crop" alt="Makeup" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
+                    </div>
+                    <div class="p-10 text-center relative">
+                        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-luxe-gold text-white w-20 h-20 flex items-center justify-center rounded-full text-3xl shadow-xl border-4 border-luxe-white dark:border-luxe-black">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3 class="mt-10 text-3xl font-serif font-bold mb-4 dark:text-white text-luxe-black">Artistry Makeup</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-8">Flawless application for weddings, galas, and editorial shoots using premium brands.</p>
+                        <button onclick="openModal('modal-makeup')" class="text-luxe-gold font-bold text-xs uppercase tracking-[0.2em] hover:text-luxe-black dark:hover:text-white transition-colors border-b-2 border-transparent hover:border-luxe-gold pb-1">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-luxe-white dark:bg-luxe-black rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 reveal delay-200 border border-luxe-tan/30 dark:border-luxe-gray/20">
+                    <div class="h-80 overflow-hidden relative cursor-pointer" onclick="openModal('modal-skin')">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1000&auto=format&fit=crop" alt="Skincare" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
+                    </div>
+                    <div class="p-10 text-center relative">
+                        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-luxe-gold text-white w-20 h-20 flex items-center justify-center rounded-full text-3xl shadow-xl border-4 border-luxe-white dark:border-luxe-black">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3 class="mt-10 text-3xl font-serif font-bold mb-4 dark:text-white text-luxe-black">Skincare</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-8">Rejuvenating facials and advanced treatments designed to restore your natural glow.</p>
+                        <button onclick="openModal('modal-skin')" class="text-luxe-gold font-bold text-xs uppercase tracking-[0.2em] hover:text-luxe-black dark:hover:text-white transition-colors border-b-2 border-transparent hover:border-luxe-gold pb-1">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group bg-luxe-white dark:bg-luxe-black rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 reveal delay-300 border border-luxe-tan/30 dark:border-luxe-gray/20">
+                    <div class="h-80 overflow-hidden relative cursor-pointer" onclick="openModal('modal-nails')">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1000&auto=format&fit=crop" alt="Nails" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
+                    </div>
+                    <div class="p-10 text-center relative">
+                        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-luxe-gold text-white w-20 h-20 flex items-center justify-center rounded-full text-3xl shadow-xl border-4 border-luxe-white dark:border-luxe-black">
+                            <i class="fas fa-hand-sparkles"></i>
+                        </div>
+                        <h3 class="mt-10 text-3xl font-serif font-bold mb-4 dark:text-white text-luxe-black">Nail Bar</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-8">Luxurious manicures and pedicures in a relaxing, hygienic environment.</p>
+                        <button onclick="openModal('modal-nails')" class="text-luxe-gold font-bold text-xs uppercase tracking-[0.2em] hover:text-luxe-black dark:hover:text-white transition-colors border-b-2 border-transparent hover:border-luxe-gold pb-1">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section with Parallax Feel -->
+    <!-- Blended Gradient: Tan to Black -->
+    <section id="products" class="py-32 bg-luxe-tanLight bg-textured dark:bg-black relative overflow-hidden transition-colors duration-500">
+        <!-- Background Accents -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-luxe-gold/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[700px] h-[700px] bg-luxe-gold/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+        <!-- Deep Gradient at bottom to fade into reviews -->
+        <div class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-b from-transparent to-luxe-black/80 dark:to-black pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 reveal">
+                <div>
+                    <span class="text-luxe-gold text-sm font-bold uppercase tracking-[0.2em]">Shop The Look</span>
+                    <h2 class="text-5xl md:text-6xl font-serif mt-4 dark:text-white text-luxe-black">Curated Essentials</h2>
+                </div>
+                <button id="view-all-btn" onclick="toggleProducts()" class="hidden md:block text-luxe-black dark:text-white hover:text-luxe-gold transition-colors font-bold uppercase tracking-[0.15em] text-sm border-b-2 border-luxe-gold pb-1 mt-8 md:mt-0">View All Products</button>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Product 1 -->
+                <div class="bg-white dark:bg-luxe-charcoal p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 reveal group border border-luxe-tan/20 dark:border-luxe-gray/10 flex flex-col items-center">
+                    <div class="bg-luxe-tanLight dark:bg-gray-800 h-80 mb-8 flex items-center justify-center overflow-hidden relative rounded-xl w-full">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Hair Care">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <button onclick="openOrderModal('Hair Care')" class="bg-white text-luxe-black px-8 py-3 rounded-full font-bold text-sm hover:bg-luxe-gold hover:text-white transition-colors shadow-lg transform translate-y-4 group-hover:translate-y-0 duration-300 tracking-widest uppercase">Quick Order</button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif font-bold dark:text-white text-luxe-black">Luxe Hair Care</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-base my-3 font-light">Premium shampoos & serums</p>
+                        <span class="text-luxe-gold font-bold text-lg tracking-wide block mt-2">$45.00 - $120.00</span>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white dark:bg-luxe-charcoal p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 reveal delay-100 group border border-luxe-tan/20 dark:border-luxe-gray/10 flex flex-col items-center">
+                    <div class="bg-luxe-tanLight dark:bg-gray-800 h-80 mb-8 flex items-center justify-center overflow-hidden relative rounded-xl w-full">
+                        <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=1000&auto=format&fit=crop" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Makeup">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <button onclick="openOrderModal('Makeup')" class="bg-white text-luxe-black px-8 py-3 rounded-full font-bold text-sm hover:bg-luxe-gold hover:text-white transition-colors shadow-lg transform translate-y-4 group-hover:translate-y-0 duration-300 tracking-widest uppercase">Quick Order</button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif font-bold dark:text-white text-luxe-black">Signature Makeup</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-base my-3 font-light">High-pigment foundations & palettes</p>
+                        <span class="text-luxe-gold font-bold text-lg tracking-wide block mt-2">$30.00 - $85.00</span>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white dark:bg-luxe-charcoal p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 reveal delay-200 group border border-luxe-tan/20 dark:border-luxe-gray/10 flex flex-col items-center">
+                    <div class="bg-luxe-tanLight dark:bg-gray-800 h-80 mb-8 flex items-center justify-center overflow-hidden relative rounded-xl w-full">
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000&auto=format&fit=crop" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Skincare">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <button onclick="openOrderModal('Skincare')" class="bg-white text-luxe-black px-8 py-3 rounded-full font-bold text-sm hover:bg-luxe-gold hover:text-white transition-colors shadow-lg transform translate-y-4 group-hover:translate-y-0 duration-300 tracking-widest uppercase">Quick Order</button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif font-bold dark:text-white text-luxe-black">Radiance Skincare</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-base my-3 font-light">Organic serums & clay masks</p>
+                        <span class="text-luxe-gold font-bold text-lg tracking-wide block mt-2">$55.00 - $150.00</span>
+                    </div>
+                </div>
+
+                <!-- NEW PRODUCTS (Hidden by default) -->
+                <!-- Product 4 -->
+                <div class="extra-product hidden bg-white dark:bg-luxe-charcoal p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 reveal group border border-luxe-tan/20 dark:border-luxe-gray/10 flex flex-col items-center">
+                    <div class="bg-luxe-tanLight dark:bg-gray-800 h-80 mb-8 flex items-center justify-center overflow-hidden relative rounded-xl w-full">
+                        <!-- Updated Image -->
+                        <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?q=80&w=1000&auto=format&fit=crop" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Body Oil">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <button onclick="openOrderModal('Body Oil')" class="bg-white text-luxe-black px-8 py-3 rounded-full font-bold text-sm hover:bg-luxe-gold hover:text-white transition-colors shadow-lg transform translate-y-4 group-hover:translate-y-0 duration-300 tracking-widest uppercase">Quick Order</button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif font-bold dark:text-white text-luxe-black">Revitalizing Body Oil</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-base my-3 font-light">Deep hydration & glow</p>
+                        <span class="text-luxe-gold font-bold text-lg tracking-wide block mt-2">$65.00</span>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="extra-product hidden bg-white dark:bg-luxe-charcoal p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 reveal group border border-luxe-tan/20 dark:border-luxe-gray/10 flex flex-col items-center">
+                    <div class="bg-luxe-tanLight dark:bg-gray-800 h-80 mb-8 flex items-center justify-center overflow-hidden relative rounded-xl w-full">
+                        <!-- Updated Image -->
+                        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=1000&auto=format&fit=crop" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Manicure Set">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <button onclick="openOrderModal('Manicure Kit')" class="bg-white text-luxe-black px-8 py-3 rounded-full font-bold text-sm hover:bg-luxe-gold hover:text-white transition-colors shadow-lg transform translate-y-4 group-hover:translate-y-0 duration-300 tracking-widest uppercase">Quick Order</button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif font-bold dark:text-white text-luxe-black">Pro Manicure Kit</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-base my-3 font-light">Salon quality tools</p>
+                        <span class="text-luxe-gold font-bold text-lg tracking-wide block mt-2">$40.00</span>
+                    </div>
+                </div>
+
+                <!-- Product 6 - Centered and Aligned -->
+                <div class="extra-product hidden bg-white dark:bg-luxe-charcoal p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 reveal group border border-luxe-tan/20 dark:border-luxe-gray/10 flex flex-col items-center">
+                    <div class="bg-luxe-tanLight dark:bg-gray-800 h-80 mb-8 flex items-center justify-center overflow-hidden relative rounded-xl w-full">
+                        <img src="https://images.unsplash.com/photo-1602928321679-560bb453f190?q=80&w=1000&auto=format&fit=crop" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Diffuser">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <button onclick="openOrderModal('Aromatherapy Diffuser')" class="bg-white text-luxe-black px-8 py-3 rounded-full font-bold text-sm hover:bg-luxe-gold hover:text-white transition-colors shadow-lg transform translate-y-4 group-hover:translate-y-0 duration-300 tracking-widest uppercase">Quick Order</button>
+                        </div>
+                    </div>
+                    <div class="text-center w-full">
+                        <h3 class="text-2xl font-serif font-bold dark:text-white text-luxe-black">Aromatherapy Diffuser</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-base my-3 font-light">Calming scents for home</p>
+                        <span class="text-luxe-gold font-bold text-lg tracking-wide block mt-2">$85.00</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Mobile View All Button (Visible only on mobile) -->
+            <div class="text-center mt-12 md:hidden">
+                <button onclick="toggleProducts()" class="bg-luxe-gold text-white px-8 py-3 rounded-full font-bold text-sm hover:bg-luxe-dark transition-colors uppercase tracking-widest shadow-lg">View All Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="reviews" class="py-32 bg-luxe-black text-white relative">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <i class="fas fa-quote-left text-5xl text-luxe-gold mb-12 opacity-60"></i>
+            
+            <div id="testimonial-carousel" class="relative max-w-4xl mx-auto h-80 flex items-center justify-center">
+                <!-- Testimonial 1 -->
+                <div class="testimonial absolute inset-0 transition-all duration-1000 opacity-100 flex flex-col justify-center items-center px-4">
+                    <h3 class="text-3xl md:text-5xl font-serif leading-tight mb-8 font-light italic text-gray-100">Amazing service! I always leave feeling like a queen. The attention to detail is unmatched in the city.</h3>
+                    <div class="text-luxe-gold mb-4 text-xl tracking-[0.2em]">★★★★★</div>
+                    <p class="font-bold uppercase tracking-[0.2em] text-base text-gray-400">— Jane Doe</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial absolute inset-0 transition-all duration-1000 opacity-0 pointer-events-none flex flex-col justify-center items-center px-4">
+                    <h3 class="text-3xl md:text-5xl font-serif leading-tight mb-8 font-light italic text-gray-100">My hair has never looked better. The stylists actually listen to what you want. Highly recommend!</h3>
+                    <div class="text-luxe-gold mb-4 text-xl tracking-[0.2em]">★★★★★</div>
+                    <p class="font-bold uppercase tracking-[0.2em] text-base text-gray-400">— Sarah Brown</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial absolute inset-0 transition-all duration-1000 opacity-0 pointer-events-none flex flex-col justify-center items-center px-4">
+                    <h3 class="text-3xl md:text-5xl font-serif leading-tight mb-8 font-light italic text-gray-100">The best skincare treatments I've ever had. My skin is glowing days later.</h3>
+                    <div class="text-luxe-gold mb-4 text-xl tracking-[0.2em]">★★★★★</div>
+                    <p class="font-bold uppercase tracking-[0.2em] text-base text-gray-400">— John Smith</p>
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="flex justify-center gap-4 mt-8">
+                <button class="dot w-3 h-3 rounded-full bg-luxe-gold transition-all duration-300 hover:scale-125" onclick="setTestimonial(0)"></button>
+                <button class="dot w-3 h-3 rounded-full bg-gray-600 hover:bg-luxe-gold transition-all duration-300 hover:scale-125" onclick="setTestimonial(1)"></button>
+                <button class="dot w-3 h-3 rounded-full bg-gray-600 hover:bg-luxe-gold transition-all duration-300 hover:scale-125" onclick="setTestimonial(2)"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Hours & Location -->
+    <section class="py-24 bg-gradient-to-b from-luxe-cream via-gray-100 to-white bg-textured dark:bg-luxe-charcoal dark:from-luxe-charcoal dark:to-luxe-charcoal transition-colors">
+        <div class="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <span class="text-luxe-gold text-sm font-bold uppercase tracking-[0.2em]">Visit Us</span>
+                <h2 class="text-4xl md:text-5xl font-serif mt-4 mb-8 dark:text-white text-luxe-black">Opening Hours</h2>
+                <ul class="space-y-6 text-xl text-gray-600 dark:text-gray-300">
+                    <li class="flex justify-between border-b border-luxe-tan/50 dark:border-gray-700 pb-4">
+                        <span>Monday - Friday</span>
+                        <span class="font-bold text-luxe-black dark:text-white">9:00 AM - 7:00 PM</span>
+                    </li>
+                    <li class="flex justify-between border-b border-luxe-tan/50 dark:border-gray-700 pb-4">
+                        <span>Saturday</span>
+                        <span class="font-bold text-luxe-black dark:text-white">10:00 AM - 5:00 PM</span>
+                    </li>
+                    <li class="flex justify-between text-luxe-gold font-bold">
+                        <span>Sunday</span>
+                        <span>Closed</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="h-[400px] bg-luxe-tanLight rounded-2xl overflow-hidden shadow-2xl reveal delay-100 relative group border border-luxe-tan/30">
+                 <!-- Mock Map Image -->
+                 <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Store Interior">
+                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                     <a href="https://maps.google.com" target="_blank" class="bg-white/95 text-luxe-black px-8 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-transform flex items-center gap-3 backdrop-blur-md">
+                         <i class="fas fa-map-marker-alt text-luxe-gold text-xl"></i> Get Directions
+                     </a>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer id="contact" class="bg-luxe-black text-white pt-24 pb-12">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <!-- Brand -->
+                <div class="space-y-6">
+                    <a href="#" class="text-3xl font-serif font-bold tracking-widest flex items-center gap-2">
+                        <span class="text-luxe-gold text-4xl">L</span>UXE
+                    </a>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        Your destination for premium beauty and wellness services. We believe self-care is a necessity, not a luxury.
+                    </p>
+                    <div class="flex gap-4 pt-2">
+                        <a href="https://www.instagram.com" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-luxe-gold hover:text-white transition-all duration-300 group"><i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-luxe-gold hover:text-white transition-all duration-300 group"><i class="fab fa-facebook-f text-xl group-hover:scale-110 transition-transform"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-luxe-gold hover:text-white transition-all duration-300 group"><i class="fab fa-twitter text-xl group-hover:scale-110 transition-transform"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-serif font-bold mb-8 text-luxe-gold tracking-widest">Quick Links</h3>
+                    <ul class="space-y-4 text-base text-gray-400">
+                        <li><a href="#services" class="hover:text-white hover:translate-x-1 inline-block transition-transform">Services</a></li>
+                        <li><a href="#products" class="hover:text-white hover:translate-x-1 inline-block transition-transform">Products</a></li>
+                        <li><a href="#reviews" class="hover:text-white hover:translate-x-1 inline-block transition-transform">Testimonials</a></li>
+                        <li><a href="#" onclick="openPrivacyModal(event)" class="hover:text-white hover:translate-x-1 inline-block transition-transform">Privacy Policy & Terms</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-serif font-bold mb-8 text-luxe-gold tracking-widest">Contact Us</h3>
+                    <ul class="space-y-6 text-base text-gray-400">
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-map-marker-alt mt-1 text-luxe-gold"></i>
+                            <span>1234 Luxury Lane,<br>Beverly Hills, CA 90210</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i class="fas fa-phone text-luxe-gold"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <i class="fas fa-envelope text-luxe-gold"></i>
+                            <span>concierge@luxebeauty.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter/Form -->
+                <div>
+                    <h3 class="text-lg font-serif font-bold mb-8 text-luxe-gold tracking-widest">Get in Touch</h3>
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <input type="text" placeholder="Your Name" required class="w-full bg-gray-900 border border-gray-700 text-white px-5 py-3 rounded focus:outline-none focus:border-luxe-gold transition-colors text-sm">
+                        <input type="email" placeholder="Your Email" required class="w-full bg-gray-900 border border-gray-700 text-white px-5 py-3 rounded focus:outline-none focus:border-luxe-gold transition-colors text-sm">
+                        <textarea placeholder="Message" required rows="3" class="w-full bg-gray-900 border border-gray-700 text-white px-5 py-3 rounded focus:outline-none focus:border-luxe-gold transition-colors text-sm resize-none"></textarea>
+                        <button type="submit" class="w-full bg-luxe-gold text-luxe-black font-bold py-3 rounded hover:bg-white transition-colors text-sm uppercase tracking-wide">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-10 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 Luxe Beauty Lounge. All rights reserved.</p>
+                <p class="mt-2">Designed by <a href="https://alectronic-solutions.github.io/" target="_blank" class="hover:text-luxe-gold transition-colors underline decoration-luxe-gold/50 hover:decoration-luxe-gold">Alectronic Solutions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-luxe-gold text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transform translate-y-24 transition-all duration-500 hover:bg-white hover:text-luxe-gold hover:-translate-y-1 z-40 border-2 border-transparent hover:border-luxe-gold">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- Modals -->
+    <!-- Service Modals Overlay -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/90 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-md transition-all duration-300" onclick="closeAllModals(event)">
+        
+        <!-- Hair Modal -->
+        <div id="modal-hair" class="modal-content hidden bg-white dark:bg-luxe-charcoal max-w-xl w-full max-h-[90vh] overflow-y-auto rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300">
+            <div class="h-48 bg-[url('https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1000')] bg-cover bg-center relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-luxe-gold transition-colors"><i class="fas fa-times"></i></button>
+                <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full">
+                    <h3 class="text-3xl text-white font-serif">Hair Styling Services</h3>
+                </div>
+            </div>
+            <div class="p-10">
+                <p class="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed">Transform your look with our expert hair styling services. Whether you need a fresh cut, vibrant color, or an elegant updo, our stylists are here to make you feel fabulous.</p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Cut & Blow Dry:</strong> Precision cuts and smooth blowouts.</div></li>
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Coloring & Highlights:</strong> Custom color blends.</div></li>
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Extensions:</strong> Premium volume and length.</div></li>
+                </ul>
+                <a href="#contact" onclick="closeModal()" class="block w-full text-center bg-luxe-black text-white py-4 rounded-lg hover:bg-luxe-gold transition-colors uppercase font-bold text-sm tracking-wider">Book Appointment</a>
+            </div>
+        </div>
+
+        <!-- Makeup Modal -->
+        <div id="modal-makeup" class="modal-content hidden bg-white dark:bg-luxe-charcoal max-w-xl w-full max-h-[90vh] overflow-y-auto rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300">
+            <div class="h-48 bg-[url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1000')] bg-cover bg-center relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-luxe-gold transition-colors"><i class="fas fa-times"></i></button>
+                <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full">
+                    <h3 class="text-3xl text-white font-serif">Makeup Artistry</h3>
+                </div>
+            </div>
+            <div class="p-10">
+                <p class="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed">Enhance your natural beauty with our professional makeup services. From bridal looks to evening glam, we use high-quality products.</p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Bridal Makeup:</strong> Timeless and elegant looks.</div></li>
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Evening Glam:</strong> Bold styles for events.</div></li>
+                </ul>
+                <a href="#contact" onclick="closeModal()" class="block w-full text-center bg-luxe-black text-white py-4 rounded-lg hover:bg-luxe-gold transition-colors uppercase font-bold text-sm tracking-wider">Book Appointment</a>
+            </div>
+        </div>
+
+        <!-- Skincare Modal -->
+        <div id="modal-skin" class="modal-content hidden bg-white dark:bg-luxe-charcoal max-w-xl w-full max-h-[90vh] overflow-y-auto rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300">
+            <div class="h-48 bg-[url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1000')] bg-cover bg-center relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-luxe-gold transition-colors"><i class="fas fa-times"></i></button>
+                <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full">
+                    <h3 class="text-3xl text-white font-serif">Skincare Treatments</h3>
+                </div>
+            </div>
+            <div class="p-10">
+                <p class="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed">Rejuvenate your skin with our luxurious treatments tailored to your skin type.</p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Facials:</strong> Deep cleansing and hydration.</div></li>
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Peels:</strong> Exfoliation for smoother skin.</div></li>
+                </ul>
+                <a href="#contact" onclick="closeModal()" class="block w-full text-center bg-luxe-black text-white py-4 rounded-lg hover:bg-luxe-gold transition-colors uppercase font-bold text-sm tracking-wider">Book Appointment</a>
+            </div>
+        </div>
+
+        <!-- Nails Modal -->
+        <div id="modal-nails" class="modal-content hidden bg-white dark:bg-luxe-charcoal max-w-xl w-full max-h-[90vh] overflow-y-auto rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300">
+            <div class="h-48 bg-[url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1000')] bg-cover bg-center relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-luxe-gold transition-colors"><i class="fas fa-times"></i></button>
+                <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full">
+                    <h3 class="text-3xl text-white font-serif">Nail Services</h3>
+                </div>
+            </div>
+            <div class="p-10">
+                <p class="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed">Pamper your hands and feet with our luxurious nail services.</p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Gel Manicures:</strong> Long-lasting shine.</div></li>
+                    <li class="flex items-start gap-4 text-base text-gray-700 dark:text-gray-200"><i class="fas fa-check-circle text-luxe-gold mt-1 text-xl"></i> <div><strong>Spa Pedicures:</strong> Relaxing treatments.</div></li>
+                </ul>
+                <a href="#contact" onclick="closeModal()" class="block w-full text-center bg-luxe-black text-white py-4 rounded-lg hover:bg-luxe-gold transition-colors uppercase font-bold text-sm tracking-wider">Book Appointment</a>
+            </div>
+        </div>
+
+        <!-- Order Modal -->
+        <div id="modal-order" class="modal-content hidden bg-white dark:bg-luxe-charcoal max-w-md w-full max-h-[90vh] overflow-y-auto rounded-xl overflow-hidden shadow-2xl transform transition-all duration-300">
+            <div class="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-luxe-cream dark:bg-black/20">
+                <h3 class="text-xl font-serif font-bold dark:text-white">Product Order</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-luxe-gold transition-colors"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-8">
+                <form onsubmit="handleOrderSubmit(event)" class="space-y-5">
+                    <input type="hidden" id="order-product-type">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest">Product Category</label>
+                        <input type="text" id="display-product-type" disabled class="w-full bg-gray-100 dark:bg-gray-800 border-none rounded-lg p-3 text-gray-600 dark:text-gray-300 font-medium">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest">Your Name</label>
+                        <input type="text" required class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg p-3 focus:ring-2 focus:ring-luxe-gold focus:border-transparent outline-none dark:text-white transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest">Email</label>
+                        <input type="email" required class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg p-3 focus:ring-2 focus:ring-luxe-gold focus:border-transparent outline-none dark:text-white transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest">Specific Product / Notes</label>
+                        <textarea required class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg p-3 focus:ring-2 focus:ring-luxe-gold focus:border-transparent outline-none dark:text-white h-24 transition-all resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-luxe-gold text-white font-bold py-4 rounded-lg hover:bg-luxe-dark transition-colors shadow-lg mt-2 uppercase tracking-wider text-sm">Submit Request</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Privacy Policy Modal -->
+        <div id="modal-privacy" class="modal-content hidden bg-white dark:bg-luxe-charcoal max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-2xl overflow-hidden shadow-2xl transform transition-all h-[80vh] flex flex-col">
+            <div class="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-luxe-cream dark:bg-black/20">
+                <h3 class="text-2xl font-serif font-bold dark:text-white">Privacy Policy & Terms</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-luxe-gold transition-colors"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-10 overflow-y-auto flex-1 prose dark:prose-invert max-w-none">
+                <h4 class="text-xl font-bold mb-4 font-serif text-luxe-black dark:text-white">Privacy Policy</h4>
+                <p class="text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">At Luxe Beauty Lounge, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you visit our website or use our services.</p>
+                
+                <h5 class="font-bold text-sm mb-2 uppercase tracking-wider text-luxe-gold">Information We Collect</h5>
+                <ul class="list-disc pl-5 text-base text-gray-600 dark:text-gray-300 mb-8 space-y-2">
+                    <li><strong>Personal Information:</strong> Name, email address, phone number, and payment details.</li>
+                    <li><strong>Usage Data:</strong> Information about how you interact with our website, such as IP address and browser type.</li>
+                </ul>
+
+                <h5 class="font-bold text-sm mb-2 uppercase tracking-wider text-luxe-gold">How We Use Your Information</h5>
+                <ul class="list-disc pl-5 text-base text-gray-600 dark:text-gray-300 mb-8 space-y-2">
+                    <li>To provide and improve our services.</li>
+                    <li>To communicate with you about appointments and promotions.</li>
+                </ul>
+
+                <h4 class="text-xl font-bold mb-4 font-serif text-luxe-black dark:text-white border-t border-gray-200 dark:border-gray-700 pt-8">Terms of Service</h4>
+                <p class="text-base text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">By using our website or services, you agree to the following terms:</p>
+                
+                <h5 class="font-bold text-sm mb-2 uppercase tracking-wider text-luxe-gold">Appointments & Cancellations</h5>
+                <ul class="list-disc pl-5 text-base text-gray-600 dark:text-gray-300 mb-8 space-y-2">
+                    <li>Appointments must be canceled at least 24 hours in advance to avoid a fee.</li>
+                    <li>Late arrivals may result in shortened service time.</li>
+                </ul>
+
+                <h5 class="font-bold text-sm mb-2 uppercase tracking-wider text-luxe-gold">Liability</h5>
+                <p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">Luxe Beauty Lounge is not responsible for any allergic reactions or damages resulting from the use of our products or services.</p>
+            </div>
+            <div class="p-6 border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-black/20 text-right">
+                <button onclick="closeModal()" class="bg-luxe-black text-white px-8 py-3 rounded-lg text-sm hover:bg-luxe-gold transition-colors font-bold uppercase tracking-wide">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // --- Core UI Logic ---
+
+        // Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 600);
+        });
+
+        // Sticky Navbar with Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+                navbar.classList.remove('navbar-transparent', 'py-8');
+            } else {
+                navbar.classList.add('navbar-transparent', 'py-8');
+                navbar.classList.remove('navbar-scrolled');
+            }
+            
+            // Back to Top Button
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 400) {
+                backToTop.classList.remove('translate-y-24');
+            } else {
+                backToTop.classList.add('translate-y-24');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Dark Mode Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const html = document.documentElement;
+
+        // Check local storage
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            updateIcons(true);
+        } else {
+            html.classList.remove('dark');
+            updateIcons(false);
+        }
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcons(isDark);
+        }
+
+        function updateIcons(isDark) {
+            const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+            themeToggle.innerHTML = `<i class="fas ${iconClass} text-xl"></i>`;
+            mobileThemeToggle.innerHTML = `<span class="text-xl font-sans uppercase tracking-widest">Switch Theme</span> <i class="fas ${iconClass}"></i>`;
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+
+        // --- Animations ---
+        
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger once on load
+        revealOnScroll();
+
+        // --- Toggle Products ---
+        function toggleProducts() {
+            const extraProducts = document.querySelectorAll('.extra-product');
+            const btn = document.getElementById('view-all-btn');
+            
+            extraProducts.forEach(product => {
+                product.classList.toggle('hidden');
+                // Force layout reflow for animation if needed, but Tailwind handles display toggling
+                if (!product.classList.contains('hidden')) {
+                     product.classList.add('active'); // ensure reveal class is active
+                }
+            });
+
+            if (btn.textContent === 'View All Products') {
+                btn.textContent = 'Show Less';
+            } else {
+                btn.textContent = 'View All Products';
+                document.getElementById('products').scrollIntoView({behavior: 'smooth'});
+            }
+        }
+
+        // --- Modals ---
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modals = document.querySelectorAll('.modal-content');
+
+        function openModal(modalId) {
+            modalOverlay.classList.remove('hidden');
+            // Hide all modals first
+            modals.forEach(m => m.classList.add('hidden'));
+            // Show specific modal
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            
+            // Animation
+            setTimeout(() => {
+                modal.classList.remove('scale-95', 'opacity-0');
+                modal.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function openOrderModal(productType) {
+            document.getElementById('order-product-type').value = productType;
+            document.getElementById('display-product-type').value = productType;
+            openModal('modal-order');
+        }
+
+        function openPrivacyModal(e) {
+            e.preventDefault();
+            openModal('modal-privacy');
+        }
+
+        function closeModal() {
+            modals.forEach(m => {
+                m.classList.add('scale-95', 'opacity-0');
+                m.classList.remove('scale-100', 'opacity-100');
+            });
+            setTimeout(() => {
+                modalOverlay.classList.add('hidden');
+                modals.forEach(m => m.classList.add('hidden'));
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+
+        function closeAllModals(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        }
+
+        // --- Forms & Toasts ---
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.remove('translate-x-full');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 4000);
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            // Simulating API call
+            const btn = e.target.querySelector('button');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                showToast('Thank you! Your message has been sent successfully.');
+                e.target.reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.textContent;
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                closeModal();
+                showToast('Order request received! We will contact you shortly.');
+                e.target.reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        // --- Testimonials Carousel ---
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.dot');
+
+        function setTestimonial(index) {
+            testimonials.forEach(t => {
+                t.classList.remove('opacity-100');
+                t.classList.add('opacity-0', 'pointer-events-none');
+            });
+            dots.forEach(d => {
+                d.classList.remove('bg-luxe-gold', 'scale-125');
+                d.classList.add('bg-gray-600');
+            });
+
+            testimonials[index].classList.remove('opacity-0', 'pointer-events-none');
+            testimonials[index].classList.add('opacity-100');
+            dots[index].classList.remove('bg-gray-600');
+            dots[index].classList.add('bg-luxe-gold', 'scale-125');
+            
+            currentTestimonial = index;
+        }
+
+        function nextTestimonial() {
+            let next = (currentTestimonial + 1) % testimonials.length;
+            setTestimonial(next);
+        }
+
+        // Auto rotate testimonials
+        setInterval(nextTestimonial, 7000);
+
+    </script>
 </body>
 </html>
