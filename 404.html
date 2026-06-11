@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Luxe Beauty Lounge</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <style>
+    .not-found {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: var(--gutter);
+      background: var(--bg);
+      position: relative;
+    }
+    .not-found__num {
+      font-family: var(--font-serif);
+      font-size: clamp(7rem, 20vw, 14rem);
+      font-weight: 300; line-height: 1;
+      color: var(--gold); opacity: .18;
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -55%);
+      pointer-events: none; user-select: none;
+      letter-spacing: -.04em;
+    }
+    .not-found__inner { position: relative; z-index: 1; max-width: 480px; }
+    .not-found__eyebrow { margin-bottom: 1rem; }
+    .not-found__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--ink); margin-bottom: 1.25rem;
+    }
+    .not-found__title em { font-style: italic; color: var(--gold); }
+    .not-found__sub {
+      font-size: .95rem; color: var(--ink-mid);
+      line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .not-found__actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  </style>
+</head>
+<body class="page-fade">
+
+  <main class="not-found" id="main-content">
+    <span class="not-found__num" aria-hidden="true">404</span>
+    <div class="not-found__inner">
+      <p class="eyebrow not-found__eyebrow">Lost your way?</p>
+      <h1 class="not-found__title">This page doesn't<br><em>exist.</em></h1>
+      <p class="not-found__sub">The page you're looking for may have moved or been removed. Head back home or book your next appointment.</p>
+      <div class="not-found__actions">
+        <a href="index.html" class="btn btn--primary">Back to Home</a>
+        <a href="book.html" class="btn btn--ghost">Book an Appointment</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

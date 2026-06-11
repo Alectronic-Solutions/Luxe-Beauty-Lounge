@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book an Appointment | Luxe Beauty Lounge Sacramento</title>
+  <meta name="description" content="Book your hair, makeup, skincare, or nail appointment at Luxe Beauty Lounge in Sacramento. Free consultation on your first visit.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://luxebeautylounge.com/book.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luxebeautylounge.com/book.html">
+  <meta property="og:title" content="Book an Appointment | Luxe Beauty Lounge">
+  <meta property="og:description" content="Schedule your visit at Sacramento's premier beauty salon.">
+  <meta property="og:image" content="https://luxebeautylounge.com/images/og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAV -->
+  <header class="nav" id="nav" role="banner">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Luxe Beauty Lounge home">
+        <img src="images/logo.png" alt="Luxe Beauty Lounge">
+        <span class="nav__brand">Luxe Beauty Lounge</span>
+      </a>
+      <nav class="nav__links" id="nav-menu" aria-label="Main navigation">
+        <ul role="list">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#about">Our Story</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="book.html" class="nav__cta" aria-current="page">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <p class="eyebrow page-hero__eyebrow">Luxe Beauty Lounge</p>
+        <h1 class="page-hero__title">Book Your <em>Appointment</em></h1>
+        <p class="page-hero__sub">Fill out the form and we'll confirm your appointment within 24 hours. Free consultation on your first visit.</p>
+      </div>
+    </section>
+
+    <!-- BOOKING LAYOUT -->
+    <section class="booking-layout">
+      <div class="booking-layout__inner">
+
+        <!-- Left: info -->
+        <div class="booking-info">
+          <p class="booking-info__tagline">Every visit starts with a conversation.<br><em>Your look is personal to you.</em></p>
+
+          <div class="booking-checklist">
+            <div class="booking-checklist__item">
+              <div class="booking-checklist__icon"><i class="fas fa-cut" aria-hidden="true"></i></div>
+              <div class="booking-checklist__text">
+                <strong>Hair Styling &amp; Color</strong>
+                <p>Precision cuts, lived-in balayage, extensions, and updos tailored to your texture and lifestyle.</p>
+              </div>
+            </div>
+            <div class="booking-checklist__item">
+              <div class="booking-checklist__icon"><i class="fas fa-magic" aria-hidden="true"></i></div>
+              <div class="booking-checklist__text">
+                <strong>Makeup</strong>
+                <p>Bridal, evening, and editorial looks built around your features using professional-grade products.</p>
+              </div>
+            </div>
+            <div class="booking-checklist__item">
+              <div class="booking-checklist__icon"><i class="fas fa-leaf" aria-hidden="true"></i></div>
+              <div class="booking-checklist__text">
+                <strong>Skincare &amp; Facials</strong>
+                <p>Glass skin facials, chemical peels, and advanced anti-aging treatments customized to your skin.</p>
+              </div>
+            </div>
+            <div class="booking-checklist__item">
+              <div class="booking-checklist__icon"><i class="fas fa-gem" aria-hidden="true"></i></div>
+              <div class="booking-checklist__text">
+                <strong>Nails</strong>
+                <p>Gel manicures, acrylic extensions, and spa pedicures. No rushing, no shortcuts.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-contact-block">
+            <h4>Prefer to reach us directly?</h4>
+            <div class="booking-contact-links">
+              <a href="tel:+19165550100"><i class="fas fa-phone" aria-hidden="true"></i> (916) 555-0100</a>
+              <a href="mailto:hello@luxebeautylounge.com"><i class="fas fa-envelope" aria-hidden="true"></i> hello@luxebeautylounge.com</a>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i> @LuxeBeautyLounge</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="booking-form-card">
+          <h2 class="booking-form-card__title">Request an Appointment</h2>
+          <p class="booking-form-card__sub">We'll review your request and follow up within 24 hours to confirm a time that works for you.</p>
+
+          <form id="booking-form" class="contact__form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="b-name">Full Name</label>
+                <input id="b-name" type="text" name="from_name" placeholder="Jane Smith" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="b-email">Email Address</label>
+                <input id="b-email" type="email" name="reply_to" placeholder="jane@example.com" required autocomplete="email">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="b-phone">Phone Number</label>
+                <input id="b-phone" type="tel" name="phone" placeholder="(916) 555-0100" autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="b-date">Preferred Date</label>
+                <input id="b-date" type="date" name="preferred_date">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Service</label>
+              <div class="service-selector" role="group" aria-label="Select a service">
+                <input type="radio" name="service" id="svc-hair"   value="Hair Styling" class="service-option">
+                <label for="svc-hair"><i class="fas fa-cut" aria-hidden="true"></i> Hair Styling</label>
+
+                <input type="radio" name="service" id="svc-color"  value="Color & Balayage" class="service-option">
+                <label for="svc-color"><i class="fas fa-palette" aria-hidden="true"></i> Color &amp; Balayage</label>
+
+                <input type="radio" name="service" id="svc-makeup" value="Makeup" class="service-option">
+                <label for="svc-makeup"><i class="fas fa-magic" aria-hidden="true"></i> Makeup</label>
+
+                <input type="radio" name="service" id="svc-bridal" value="Bridal" class="service-option">
+                <label for="svc-bridal"><i class="fas fa-ring" aria-hidden="true"></i> Bridal</label>
+
+                <input type="radio" name="service" id="svc-skin"   value="Skincare / Facial" class="service-option">
+                <label for="svc-skin"><i class="fas fa-leaf" aria-hidden="true"></i> Skincare / Facial</label>
+
+                <input type="radio" name="service" id="svc-nails"  value="Nails" class="service-option">
+                <label for="svc-nails"><i class="fas fa-gem" aria-hidden="true"></i> Nails</label>
+
+                <input type="radio" name="service" id="svc-other"  value="Not sure yet" class="service-option">
+                <label for="svc-other"><i class="fas fa-question" aria-hidden="true"></i> Not sure yet</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="b-message">Tell us more (optional)</label>
+              <textarea id="b-message" name="message" placeholder="Describe what you're looking for, any concerns, or special requests..." rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full" id="booking-submit">Send Booking Request</button>
+            <p id="booking-status" role="status" aria-live="polite" style="text-align:center;font-size:.85rem;min-height:1.4em;padding-top:.25rem;"></p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOURS + MAP STRIP -->
+    <section class="info-strip" aria-label="Hours and location">
+      <div class="info-strip__hours">
+        <p class="eyebrow eyebrow--light">Visit Us</p>
+        <h2 class="info-strip__title">Hours &amp; Location</h2>
+        <dl class="hours">
+          <div class="hours__row"><dt>Monday – Friday</dt><dd>9 AM – 7 PM</dd></div>
+          <div class="hours__row"><dt>Saturday</dt><dd>10 AM – 5 PM</dd></div>
+          <div class="hours__row hours__row--closed"><dt>Sunday</dt><dd>Closed</dd></div>
+        </dl>
+        <address class="info-strip__address">
+          1234 J Street, Sacramento, CA 95814<br>
+          <a href="tel:+19165550100">(916) 555-0100</a>
+        </address>
+      </div>
+      <div class="info-strip__social" style="display:flex;flex-direction:column;justify-content:center;">
+        <p class="eyebrow eyebrow--light">Find Us</p>
+        <h2 class="info-strip__title">Get Directions</h2>
+        <p style="font-size:.9rem;color:var(--cream-dim);line-height:1.8;max-width:38ch;margin-bottom:1.5rem;">We're in the heart of midtown Sacramento, walking distance from Capitol Park. Street parking is available on J Street and nearby side streets.</p>
+        <a href="https://maps.google.com/?q=1234+J+Street+Sacramento+CA" target="_blank" rel="noopener noreferrer" class="btn btn--outline" style="width:fit-content;">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Open in Google Maps
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo-link" aria-label="Luxe Beauty Lounge home">
+          <div class="footer__logo-wrap">
+            <img src="images/logo.png" alt="" loading="lazy" width="120" height="60">
+            <span class="footer__brand-name">Luxe Beauty Lounge</span>
+          </div>
+        </a>
+        <p>Sacramento's go-to salon for color, skin, and style. Where beauty feels personal.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Services">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="services.html#hair">Hair Styling</a></li>
+          <li><a href="services.html#makeup">Makeup</a></li>
+          <li><a href="services.html#skincare">Skincare</a></li>
+          <li><a href="services.html#nails">Nails</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__nav" aria-label="Site links">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="index.html#about">Our Story</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="book.html">Book Now</a></li>
+          <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+      <div class="footer__contact">
+        <h3>Visit Us</h3>
+        <address>
+          1234 J Street<br>
+          Sacramento, CA 95814<br>
+          <a href="tel:+19165550100">(916) 555-0100</a>
+        </address>
+        <dl class="footer__hours">
+          <div><dt>Mon – Fri</dt><dd>9 AM – 7 PM</dd></div>
+          <div><dt>Saturday</dt><dd>10 AM – 5 PM</dd></div>
+          <div><dt>Sunday</dt><dd>Closed</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2025 Luxe Beauty Lounge. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="privacy-terms.html">Terms of Service</a>
+        <a href="https://alectronic-solutions.github.io/home" rel="noopener noreferrer">Design by Alectronic Solutions</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>(function(){ emailjs.init({ publicKey: 'YOUR_PUBLIC_KEY' }); })();</script>
+  <script src="script.js"></script>
+  <script>
+    // Booking form handler
+    const bookingForm   = document.getElementById('booking-form');
+    const bookingStatus = document.getElementById('booking-status');
+    const bookingSubmit = document.getElementById('booking-submit');
+
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const SERVICE_ID  = 'YOUR_SERVICE_ID';
+        const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
+        bookingSubmit.disabled    = true;
+        bookingSubmit.textContent = 'Sending...';
+        bookingStatus.textContent = '';
+        bookingStatus.className   = '';
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, bookingForm)
+          .then(() => {
+            bookingStatus.textContent = "Request sent! We'll confirm your appointment within 24 hours.";
+            bookingStatus.style.color = '#6fcf97';
+            bookingForm.reset();
+          })
+          .catch(err => {
+            console.error('EmailJS error:', err);
+            bookingStatus.textContent = 'Something went wrong. Please call us at (916) 555-0100.';
+            bookingStatus.style.color = '#eb5757';
+          })
+          .finally(() => {
+            bookingSubmit.disabled    = false;
+            bookingSubmit.textContent = 'Send Booking Request';
+          });
+      });
+    }
+  </script>
+</body>
+</html>

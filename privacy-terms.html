@@ -3,148 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy & Terms of Service - Luxe Beauty Lounge</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <title>Privacy Policy &amp; Terms of Service | Luxe Beauty Lounge</title>
+  <meta name="description" content="Privacy Policy and Terms of Service for Luxe Beauty Lounge, Sacramento's premier beauty salon.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://luxebeautylounge.com/privacy-terms.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="images/logo.png">
 </head>
 <body>
-<!-- Header -->
-<header class="sticky-nav">
-  <div class="logo" onclick="scrollToTop()">
-    <img src="images/logo.png" alt="Luxe Beauty Lounge">
-  </div>
-  <!-- Hamburger Menu Button -->
-  <button id="hamburger-menu" class="hamburger-menu">
-    <i class="fas fa-bars"></i>
-  </button>
-  <!-- Navigation Links -->
-  <nav id="nav-menu">
-    <ul>
-      <li><a href="#salon-specialties">Salon Specialties</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#follow-us">Follow Us</a></li>
-      <li><a href="#store-hours">Store Hours</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#footer-contact">Contact Us</a></li>
-    </ul>
-  </nav>
-</header>
 
-  <!-- Privacy Policy & Terms of Service Section -->
-  <section class="privacy-terms"> <id="privacy-terms">
-    <div class="container">
-      <h1>Privacy Policy & Terms of Service</h1>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-      <!-- Privacy Policy -->
-      <div class="policy-section">
-        <h2>Privacy Policy</h2>
-        <p>At Luxe Beauty Lounge, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you visit our website or use our services.</p>
-        <h3>Information We Collect</h3>
-        <ul>
-          <li><strong>Personal Information:</strong> Name, email address, phone number, and payment details.</li>
-          <li><strong>Usage Data:</strong> Information about how you interact with our website, such as IP address, browser type, and pages visited.</li>
-        </ul>
-        <h3>How We Use Your Information</h3>
-        <ul>
-          <li>To provide and improve our services.</li>
-          <li>To communicate with you about appointments, promotions, and updates.</li>
-          <li>To process payments and manage your account.</li>
-        </ul>
-        <h3>Data Security</h3>
-        <p>We implement industry-standard security measures to protect your data from unauthorized access, disclosure, or misuse.</p>
-      </div>
-
-      <!-- Terms of Service -->
-      <div class="terms-section">
-        <h2>Terms of Service</h2>
-        <p>By using our website or services, you agree to the following terms and conditions:</p>
-        <h3>Appointments & Cancellations</h3>
-        <ul>
-          <li>Appointments must be canceled at least 24 hours in advance to avoid a cancellation fee.</li>
-          <li>Late arrivals may result in shortened service time.</li>
-        </ul>
-        <h3>Payment</h3>
-        <ul>
-          <li>We accept all major credit cards and cash.</li>
-          <li>Prices are subject to change without notice.</li>
-        </ul>
-        <h3>Liability</h3>
-        <p>Luxe Beauty Lounge is not responsible for any allergic reactions or damages resulting from the use of our products or services.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="premium-footer">
-    <div class="footer-container">
-      <!-- Footer Logo -->
-      <div class="footer-logo" onclick="scrollToTop()">
-        <img src="images/logo.png" alt="Luxe Beauty Lounge" class="footer-logo-img">
-        <p>Your destination for premium beauty and wellness services.</p>
-      </div>
-
-      <!-- Sitemap -->
-      <div class="footer-sitemap">
-        <h3>Site Map</h3>
-        <ul>
-          <li><a href="index.html#salon-specialties">Salon Specialties</a></li>
-          <li><a href="index.html#products">Products</a></li>
-          <li><a href="index.html#follow-us">Follow Us</a></li>
-          <li><a href="index.html#store-hours">Store Hours</a></li>
+  <!-- NAV -->
+  <header class="nav" id="nav" role="banner">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Luxe Beauty Lounge home">
+        <img src="images/logo.png" alt="Luxe Beauty Lounge">
+        <span class="nav__brand">Luxe Beauty Lounge</span>
+      </a>
+      <nav class="nav__links" id="nav-menu" aria-label="Main navigation">
+        <ul role="list">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#about">Our Story</a></li>
           <li><a href="index.html#reviews">Reviews</a></li>
-          <li><a href="index.html#footer-contact">Contact Us</a></li>
+          <li><a href="book.html" class="nav__cta">Book Now</a></li>
         </ul>
-      </div>
+      </nav>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-      <!-- Contact Form -->
-      <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <form id="footer-contact-form">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
+  <main id="main-content">
 
-      <!-- Social Links -->
-      <div class="footer-social">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="https://www.instagram.com" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com" target="_blank">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://www.twitter.com" target="_blank">
-            <i class="fab fa-twitter"></i>
-          </a>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <p class="eyebrow page-hero__eyebrow">Legal</p>
+        <h1 class="page-hero__title">Privacy &amp; <em>Terms</em></h1>
+        <p class="page-hero__sub">Our privacy policy and terms of service for Luxe Beauty Lounge clients and website visitors.</p>
+      </div>
+    </section>
+
+    <!-- PROSE CONTENT -->
+    <section class="prose-page">
+      <div class="prose-page__inner">
+        <span class="prose-page__date">Last updated: January 1, 2025</span>
+
+        <h2>Privacy Policy</h2>
+        <p>Luxe Beauty Lounge ("we," "us," or "our") operates this website and the salon at 1234 J Street, Sacramento, CA 95814. This Privacy Policy describes how we collect, use, and protect your personal information when you visit our website or contact us.</p>
+
+        <h2>Information We Collect</h2>
+        <p>We may collect the following types of personal information:</p>
+        <ul>
+          <li><strong>Contact information:</strong> name, email address, phone number when you submit our booking or contact forms</li>
+          <li><strong>Appointment details:</strong> service preferences, preferred dates, and any notes you include in your request</li>
+          <li><strong>Usage data:</strong> standard website analytics including pages visited, time on site, and referral source (collected via analytics tools)</li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use the information you provide solely to:</p>
+        <ul>
+          <li>Respond to your appointment requests and inquiries</li>
+          <li>Confirm and manage your bookings</li>
+          <li>Send service reminders or follow-ups if you have opted in</li>
+          <li>Improve our website and services based on usage patterns</li>
+        </ul>
+        <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+        <h2>Contact Form &amp; Email</h2>
+        <p>When you submit our contact or booking form, your message is delivered to us via EmailJS, a third-party email delivery service. EmailJS processes your submission securely. We do not store form submissions on our servers. Please review <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">EmailJS's privacy policy</a> for details on their data handling.</p>
+
+        <h2>Cookies &amp; Analytics</h2>
+        <p>Our website may use cookies and analytics tools (such as Google Analytics) to understand how visitors use the site. These tools collect anonymized data including page views, device type, and geographic region. You can opt out of analytics tracking through your browser settings or by using a browser extension such as the Google Analytics Opt-out Add-on.</p>
+
+        <h2>Data Security</h2>
+        <p>We take reasonable precautions to protect the information you submit. Our website uses HTTPS encryption. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>Our website and services are not directed to children under the age of 13. We do not knowingly collect personal information from children. If you believe a child has submitted information through our site, please contact us and we will remove it promptly.</p>
+
+        <h2>Your Rights</h2>
+        <p>If you would like to review, update, or request deletion of personal information you have provided to us, please contact us at <a href="mailto:hello@luxebeautylounge.com">hello@luxebeautylounge.com</a> or call <a href="tel:+19165550100">(916) 555-0100</a>. We will respond within a reasonable time frame.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date. Continued use of the site after changes constitutes acceptance of the updated policy.</p>
+
+        <h2>Terms of Service</h2>
+        <p>By accessing this website, you agree to the following terms. If you do not agree, please do not use the site.</p>
+
+        <h2>Use of This Website</h2>
+        <p>This website is provided for informational purposes and to facilitate appointment bookings for Luxe Beauty Lounge. You may not use this site for any unlawful purpose, to transmit harmful or offensive content, or to attempt to gain unauthorized access to our systems.</p>
+
+        <h2>Intellectual Property</h2>
+        <p>All content on this website (including text, images, logos, graphics, and design) is the property of Luxe Beauty Lounge or its licensors and is protected by applicable copyright and trademark laws. You may not reproduce, distribute, or create derivative works without our prior written consent.</p>
+
+        <h2>Appointment Policy</h2>
+        <ul>
+          <li><strong>Cancellations:</strong> We ask for at least 24 hours notice for cancellations. Late cancellations may be subject to a fee at our discretion.</li>
+          <li><strong>Late arrivals:</strong> Arriving more than 15 minutes late may require rescheduling to protect other clients' appointments.</li>
+          <li><strong>Consultations:</strong> A complimentary consultation is offered on your first visit. Services are quoted after the consultation and before work begins.</li>
+          <li><strong>Satisfaction:</strong> If you are not satisfied with your service, please let us know within 7 days and we will make it right.</li>
+        </ul>
+
+        <h2>Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, Luxe Beauty Lounge shall not be liable for any indirect, incidental, or consequential damages arising from your use of this website or our services. Our total liability shall not exceed the amount paid for the specific service in question.</p>
+
+        <h2>Governing Law</h2>
+        <p>These terms are governed by the laws of the State of California. Any disputes shall be resolved in the courts of Sacramento County, California.</p>
+
+        <h2>Contact Us</h2>
+        <p>For questions about this policy or our terms, please reach out:</p>
+        <p>
+          <strong>Luxe Beauty Lounge</strong><br>
+          1234 J Street, Sacramento, CA 95814<br>
+          <a href="tel:+19165550100">(916) 555-0100</a><br>
+          <a href="mailto:hello@luxebeautylounge.com">hello@luxebeautylounge.com</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo-link" aria-label="Luxe Beauty Lounge home">
+          <div class="footer__logo-wrap">
+            <img src="images/logo.png" alt="" loading="lazy" width="120" height="60">
+            <span class="footer__brand-name">Luxe Beauty Lounge</span>
+          </div>
+        </a>
+        <p>Sacramento's go-to salon for color, skin, and style. Where beauty feels personal.</p>
+        <div class="footer__social">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
         </div>
       </div>
-    </div>
-
-    <!-- Footer Bottom -->
-    <div class="footer-bottom">
-      <div class="footer-links">
-        <a href="privacy-terms.html">Privacy Policy</a>
-        <a href="privacy-terms.html">Terms of Service</a>
+      <nav class="footer__nav" aria-label="Services">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="services.html#hair">Hair Styling</a></li>
+          <li><a href="services.html#makeup">Makeup</a></li>
+          <li><a href="services.html#skincare">Skincare</a></li>
+          <li><a href="services.html#nails">Nails</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__nav" aria-label="Site links">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="index.html#about">Our Story</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="book.html">Book Now</a></li>
+          <li><a href="privacy-terms.html" aria-current="page">Privacy Policy</a></li>
+        </ul>
+      </nav>
+      <div class="footer__contact">
+        <h3>Visit Us</h3>
+        <address>
+          1234 J Street<br>
+          Sacramento, CA 95814<br>
+          <a href="tel:+19165550100">(916) 555-0100</a>
+        </address>
+        <dl class="footer__hours">
+          <div><dt>Mon – Fri</dt><dd>9 AM – 7 PM</dd></div>
+          <div><dt>Saturday</dt><dd>10 AM – 5 PM</dd></div>
+          <div><dt>Sunday</dt><dd>Closed</dd></div>
+        </dl>
       </div>
-      <p>&copy; 2023 Luxe Beauty Lounge. All rights reserved.</p>
-      <a href="https://alectronic-solutions.github.io/home">Designed by Alectronic Solutions</a>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2025 Luxe Beauty Lounge. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="privacy-terms.html" aria-current="page">Terms of Service</a>
+        <a href="https://alectronic-solutions.github.io/home" rel="noopener noreferrer">Design by Alectronic Solutions</a>
+      </div>
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
-  <button id="back-to-top" class="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <!-- Dark Mode Toggle Button -->
-  <button id="dark-mode-toggle" class="dark-mode-toggle">
-    <i class="fas fa-sun"></i>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
 
   <script src="script.js"></script>

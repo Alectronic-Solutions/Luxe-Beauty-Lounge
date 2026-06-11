@@ -1,0 +1,182 @@
+/* ── Services page ────────────────────────────────────────── */
+
+/* Alternating service sections */
+.svc-section {
+  background: var(--bg);
+  padding: clamp(4rem, 8vw, 7rem) var(--gutter);
+  border-bottom: 1px solid var(--border-light);
+}
+.svc-section--alt {
+  background: var(--bg-2);
+}
+
+.svc-section__inner {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 7vw, 6rem);
+  align-items: center;
+}
+
+/* Image */
+.svc-section__media {
+  position: relative;
+}
+.svc-section__img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+  display: block;
+  box-shadow: 0 16px 48px rgba(28, 18, 8, .12);
+}
+
+/* Content */
+.svc-section__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1.1rem;
+}
+.svc-section__title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.svc-section__intro {
+  font-size: .95rem;
+  color: var(--ink-mid);
+  line-height: 1.85;
+  max-width: 48ch;
+  margin-bottom: 2rem;
+}
+.svc-section__cta {
+  margin-top: 2.25rem;
+}
+
+/* Service price menu */
+.svc-menu {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-light);
+}
+.svc-menu__item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: .95rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.svc-menu__left {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.svc-menu__left strong {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: .01em;
+}
+.svc-menu__left span {
+  font-size: .8rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+.svc-menu__price {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Pricing disclaimer */
+.pricing-note {
+  background: var(--bg-3);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 1.25rem var(--gutter);
+}
+.pricing-note__inner {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+}
+.pricing-note__inner i {
+  color: var(--gold);
+  font-size: .82rem;
+  flex-shrink: 0;
+  margin-top: .18rem;
+}
+.pricing-note__inner p {
+  font-size: .82rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+
+/* Bottom CTA strip */
+.svc-cta-strip {
+  background: var(--bg-darker);
+  padding: clamp(4rem, 8vw, 6.5rem) var(--gutter);
+}
+.svc-cta-strip__inner {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.svc-cta-strip__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-top: .5rem;
+}
+.svc-cta-strip__title em {
+  font-style: italic;
+  color: var(--gold-on-dark);
+}
+.svc-cta-strip__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .svc-section__inner {
+    grid-template-columns: 1fr;
+  }
+  /* Image always first on mobile regardless of desktop layout */
+  .svc-section__content { order: 2; }
+  .svc-section__media   { order: 1; }
+
+  .svc-section__img {
+    aspect-ratio: 16 / 9;
+    max-height: 360px;
+  }
+  .svc-cta-strip__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .svc-menu__item {
+    flex-direction: column;
+    gap: .35rem;
+    align-items: flex-start;
+  }
+}
